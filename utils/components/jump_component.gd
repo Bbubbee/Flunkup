@@ -1,9 +1,39 @@
 extends Node2D
 
+@export var actor: CharacterBody2D
+@export var jump_force: float = -200
+@export var coyote_time: float = 0.2
+@onready var coyote_timer = $CoyoteTimer
 
-@export var actor: Node2D
+var can_jump: bool = false
+@onready var buffer_timer = $BufferTimer
 
-# Jump Buffer.
-var wants_to_jump: bool = false
 
-# Coyote Timer.
+func _ready():
+	if not actor: set_physics_process(false)
+
+
+## NOTE: This MUST be called AFTER move_and_slide()
+func handle_jump(delta):
+	if actor.is_on_floor() and not can_jump:
+		can_jump = true
+	
+	# We have left the floor. 
+	if not actor.is_on_floor() and coyote_timer.is_stopped():
+		coyote_timer.start(coyote_time)
+		
+	if not buffer_timer.is_stopped(): 
+		try_to_jump()
+			
+func _on_coyote_timer_timeout():
+	can_jump = false 
+	
+func try_to_jump():	
+	# Wants to jump.
+	if can_jump: 
+		can_jump = false
+		coyote_timer.stop() 		
+		actor.velocity.y = jump_force
+		buffer_timer.stop()
+	elif buffer_timer.is_stopped(): 
+		buffer_timer.start()

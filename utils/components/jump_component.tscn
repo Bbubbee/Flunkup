@@ -4,3 +4,13 @@
 
 [node name="JumpComponent" type="Node2D"]
 script = ExtResource("1_l2q5f")
+
+[node name="CoyoteTimer" type="Timer" parent="."]
+one_shot = true
+
+[node name="BufferTimer" type="Timer" parent="."]
+wait_time = 0.2
+one_shot = true
+
+[connection signal="timeout" from="CoyoteTimer" to="." method="_on_coyote_timer_timeout"]
+[connection signal="timeout" from="BufferTimer" to="." method="_on_buffer_timer_timeout"]
