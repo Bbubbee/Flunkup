@@ -20,6 +20,7 @@ shape = SubResource("CapsuleShape2D_kayot")
 texture = ExtResource("1_6rugr")
 
 [node name="Camera" type="Camera2D" parent="General"]
+zoom = Vector2(1.5, 1.5)
 
 [node name="Components" type="Node2D" parent="."]
 
