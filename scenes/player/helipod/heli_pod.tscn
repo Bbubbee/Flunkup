@@ -1,0 +1,41 @@
+[gd_scene load_steps=8 format=3 uid="uid://dkwhb1psqv167"]
+
+[ext_resource type="Texture2D" uid="uid://wj10ixtrxqlm" path="res://assets/player/heli/heli-Sheet.png" id="1_7dqjs"]
+[ext_resource type="Script" path="res://scenes/player/helipod/heli_pod.gd" id="1_7wsn7"]
+[ext_resource type="PackedScene" uid="uid://dtg7dr1jl4ced" path="res://utils/components/velocity_component.tscn" id="3_51yha"]
+[ext_resource type="PackedScene" uid="uid://dw5fdg8s00p7i" path="res://utils/state_machine.tscn" id="3_jr0lj"]
+[ext_resource type="Script" path="res://scenes/player/helipod/idle.gd" id="4_7yo7l"]
+[ext_resource type="Script" path="res://scenes/player/helipod/move.gd" id="5_fh3jp"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_w7t21"]
+radius = 8.0
+
+[node name="HeliPod" type="CharacterBody2D"]
+z_index = 1
+collision_layer = 0
+script = ExtResource("1_7wsn7")
+
+[node name="PhysicsShape" type="CollisionShape2D" parent="."]
+position = Vector2(0, 5)
+shape = SubResource("CircleShape2D_w7t21")
+
+[node name="General" type="Node2D" parent="."]
+
+[node name="Sprite" type="Sprite2D" parent="General"]
+texture = ExtResource("1_7dqjs")
+
+[node name="Components" type="Node2D" parent="."]
+
+[node name="VelocityComponent" parent="Components" node_paths=PackedStringArray("actor") instance=ExtResource("3_51yha")]
+actor = NodePath("../..")
+
+[node name="StateMachine" parent="." node_paths=PackedStringArray("initial_state") instance=ExtResource("3_jr0lj")]
+initial_state = NodePath("Idle")
+
+[node name="Idle" type="Node" parent="StateMachine"]
+script = ExtResource("4_7yo7l")
+
+[node name="Move" type="Node" parent="StateMachine"]
+script = ExtResource("5_fh3jp")
+
+[editable path="StateMachine"]

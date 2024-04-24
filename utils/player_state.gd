@@ -1,9 +1,9 @@
 extends Node
-class_name State
+class_name PlayerState
 
 signal transition  # Use me to transition states. 
 
-var actor: CharacterBody2D  # Parent of this state. 
+var actor: Player  # Parent of this state. 
 
 ## Note: You can't change states in the enter/exit function! 
 ## If you think a state might change in the enter/exit

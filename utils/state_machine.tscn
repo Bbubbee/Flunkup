@@ -1,4 +1,4 @@
-[gd_scene load_steps=2 format=3 uid="uid://cpd203hmfijxs"]
+[gd_scene load_steps=2 format=3 uid="uid://dw5fdg8s00p7i"]
 
 [ext_resource type="Script" path="res://utils/state_machine.gd" id="1_5anit"]
 

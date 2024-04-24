@@ -14,7 +14,7 @@ func _ready():
 
 
 ## NOTE: This MUST be called AFTER move_and_slide()
-func handle_jump(delta):
+func handle_jump():
 	if actor.is_on_floor() and not can_jump:
 		can_jump = true
 	

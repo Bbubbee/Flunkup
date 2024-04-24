@@ -1,11 +1,11 @@
-extends State
+extends PlayerState
 
 
 func physics_process(delta):
 	actor.move_and_slide()
 	
 	actor.velocity_component.handle_gravity(delta) 
-	actor.jump_component.handle_jump(delta)
+	actor.jump_component.handle_jump()
 	
 
 func on_input(event: InputEvent): 

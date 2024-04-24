@@ -4,7 +4,7 @@
 [ext_resource type="Script" path="res://scenes/player/player.gd" id="1_e41gv"]
 [ext_resource type="PackedScene" uid="uid://dtg7dr1jl4ced" path="res://utils/components/velocity_component.tscn" id="3_wmg33"]
 [ext_resource type="PackedScene" uid="uid://hgfcjwgpa70n" path="res://utils/components/jump_component.tscn" id="4_6lws1"]
-[ext_resource type="PackedScene" uid="uid://cpd203hmfijxs" path="res://utils/state_machine.tscn" id="5_ppxvu"]
+[ext_resource type="PackedScene" uid="uid://cpd203hmfijxs" path="res://utils/player_state_machine.tscn" id="5_ppxvu"]
 [ext_resource type="Script" path="res://scenes/player/states/idle.gd" id="6_paj38"]
 [ext_resource type="Script" path="res://scenes/player/move.gd" id="7_0j4yr"]
 
@@ -12,6 +12,7 @@
 radius = 6.0
 
 [node name="Player" type="CharacterBody2D"]
+collision_layer = 2
 script = ExtResource("1_e41gv")
 
 [node name="PhysicsShape" type="CollisionShape2D" parent="."]
@@ -23,7 +24,7 @@ shape = SubResource("CapsuleShape2D_kayot")
 texture = ExtResource("1_6rugr")
 
 [node name="Camera" type="Camera2D" parent="General"]
-zoom = Vector2(1.25, 1.25)
+zoom = Vector2(1.5, 1.5)
 
 [node name="Components" type="Node2D" parent="."]
 
