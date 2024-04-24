@@ -24,10 +24,15 @@ shape = SubResource("CircleShape2D_w7t21")
 [node name="Sprite" type="Sprite2D" parent="General"]
 texture = ExtResource("1_7dqjs")
 
+[node name="CenterMarker" type="Marker2D" parent="General"]
+position = Vector2(0, 5)
+
 [node name="Components" type="Node2D" parent="."]
 
 [node name="VelocityComponent" parent="Components" node_paths=PackedStringArray("actor") instance=ExtResource("3_51yha")]
 actor = NodePath("../..")
+speed = 150.0
+acceleration = 400.0
 
 [node name="StateMachine" parent="." node_paths=PackedStringArray("initial_state") instance=ExtResource("3_jr0lj")]
 initial_state = NodePath("Idle")
