@@ -8,10 +8,11 @@ extends CharacterBody2D
 
 func _ready() -> void:
 	state_machine.init(self) 
-	
-	Events.position_helipod.connect(_on_position_helipod)
+	Events.player_touched_heli.connect(_on_player_touched_heli)
 
+func _on_player_touched_heli(held: bool):
+	if held:
+		state_machine.force_transition('carrying')
+	else: 
+		state_machine.force_transition('idle')
 
-func _on_position_helipod(tile_pos: Vector2):
-	var target = tile_pos
-	state_machine.force_transition('move', target)

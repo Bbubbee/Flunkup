@@ -1,4 +1,5 @@
 extends Node2D
+class_name JumpComponent
 
 @export var actor: CharacterBody2D
 @export var jump_force: float = -200
@@ -27,7 +28,11 @@ func handle_jump():
 			
 func _on_coyote_timer_timeout():
 	can_jump = false 
-	
+
+
+## Return 
+## 	true: Jump is successful
+## 	false: Jump is unsuccessful
 func try_to_jump():	
 	# Wants to jump.
 	if can_jump: 
@@ -35,5 +40,11 @@ func try_to_jump():
 		coyote_timer.stop() 		
 		actor.velocity.y = jump_force
 		buffer_timer.stop()
+		return true
 	elif buffer_timer.is_stopped(): 
 		buffer_timer.start()
+	
+	return false 
+
+func second_jump(): 
+	actor.velocity.y = jump_force

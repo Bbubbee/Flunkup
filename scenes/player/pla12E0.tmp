@@ -1,4 +1,4 @@
-[gd_scene load_steps=13 format=3 uid="uid://b6sepyerpol16"]
+[gd_scene load_steps=12 format=3 uid="uid://b6sepyerpol16"]
 
 [ext_resource type="Texture2D" uid="uid://kvnd80adhhya" path="res://assets/player/player-Sheet.png" id="1_6rugr"]
 [ext_resource type="Script" path="res://scenes/player/player.gd" id="1_e41gv"]
@@ -9,7 +9,6 @@
 [ext_resource type="Script" path="res://scenes/player/states/idle.gd" id="6_paj38"]
 [ext_resource type="Script" path="res://scenes/player/move.gd" id="7_0j4yr"]
 [ext_resource type="Script" path="res://scenes/player/flying.gd" id="8_3fu5c"]
-[ext_resource type="Script" path="res://scenes/player/jump.gd" id="10_ijwcp"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_kayot"]
 radius = 6.0
@@ -29,7 +28,6 @@ shape = SubResource("CapsuleShape2D_kayot")
 
 [node name="Sprite" type="Sprite2D" parent="General"]
 texture = ExtResource("1_6rugr")
-hframes = 2
 
 [node name="Camera" type="Camera2D" parent="General"]
 zoom = Vector2(1.5, 1.5)
@@ -67,9 +65,6 @@ script = ExtResource("7_0j4yr")
 
 [node name="Flying" type="Node" parent="StateMachine"]
 script = ExtResource("8_3fu5c")
-
-[node name="Jump" type="Node" parent="StateMachine"]
-script = ExtResource("10_ijwcp")
 
 [connection signal="area_entered" from="General/HeliDetector" to="StateMachine/Move" method="_on_heli_detector_area_entered"]
 

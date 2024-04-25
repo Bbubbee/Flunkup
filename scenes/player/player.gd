@@ -1,12 +1,15 @@
 extends CharacterBody2D
 class_name Player
 
+# General. 
 @onready var sprite: Sprite2D = $General/Sprite
 
 # Components.
-@onready var velocity_component = $Components/VelocityComponent
-@onready var jump_component = $Components/JumpComponent
+@onready var velocity_component: PlayerVelocityComponent = $Components/VelocityComponent
+@onready var jump_component: JumpComponent = $Components/JumpComponent
 @onready var state_machine = $StateMachine
+
+@export var helipod: CharacterBody2D
 
 func _ready():
 	state_machine.init(self)
@@ -26,3 +29,15 @@ func flip_nodes():
 	elif velocity.x < 0: 
 		sprite.flip_h = true 
 		#heli_pod.position.x = 4
+		
+@onready var heli_detector = $General/HeliDetector
+
+func is_touching_helipod(): 
+	if heli_detector.has_overlapping_areas(): return true
+	else: return false
+
+
+
+
+
+

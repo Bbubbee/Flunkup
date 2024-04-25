@@ -1,15 +1,13 @@
-[gd_scene load_steps=13 format=3 uid="uid://b6sepyerpol16"]
+[gd_scene load_steps=11 format=3 uid="uid://b6sepyerpol16"]
 
 [ext_resource type="Texture2D" uid="uid://kvnd80adhhya" path="res://assets/player/player-Sheet.png" id="1_6rugr"]
 [ext_resource type="Script" path="res://scenes/player/player.gd" id="1_e41gv"]
 [ext_resource type="PackedScene" uid="uid://dtg7dr1jl4ced" path="res://utils/components/velocity_component.tscn" id="3_wmg33"]
 [ext_resource type="PackedScene" uid="uid://hgfcjwgpa70n" path="res://utils/components/jump_component.tscn" id="4_6lws1"]
-[ext_resource type="Script" path="res://utils/components/players_velocity_component.gd" id="4_hq8ke"]
 [ext_resource type="PackedScene" uid="uid://cpd203hmfijxs" path="res://utils/player_state_machine.tscn" id="5_ppxvu"]
 [ext_resource type="Script" path="res://scenes/player/states/idle.gd" id="6_paj38"]
 [ext_resource type="Script" path="res://scenes/player/move.gd" id="7_0j4yr"]
 [ext_resource type="Script" path="res://scenes/player/flying.gd" id="8_3fu5c"]
-[ext_resource type="Script" path="res://scenes/player/jump.gd" id="10_ijwcp"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_kayot"]
 radius = 6.0
@@ -29,7 +27,6 @@ shape = SubResource("CapsuleShape2D_kayot")
 
 [node name="Sprite" type="Sprite2D" parent="General"]
 texture = ExtResource("1_6rugr")
-hframes = 2
 
 [node name="Camera" type="Camera2D" parent="General"]
 zoom = Vector2(1.5, 1.5)
@@ -46,10 +43,6 @@ debug_color = Color(0.27451, 0.619608, 0.34902, 0.419608)
 [node name="Components" type="Node2D" parent="."]
 
 [node name="VelocityComponent" parent="Components" node_paths=PackedStringArray("actor") instance=ExtResource("3_wmg33")]
-script = ExtResource("4_hq8ke")
-flight_gravity = 200.0
-fly_up_speed = 100.0
-fly_down_speed = 100.0
 actor = NodePath("../..")
 friction = 600.0
 
@@ -67,9 +60,6 @@ script = ExtResource("7_0j4yr")
 
 [node name="Flying" type="Node" parent="StateMachine"]
 script = ExtResource("8_3fu5c")
-
-[node name="Jump" type="Node" parent="StateMachine"]
-script = ExtResource("10_ijwcp")
 
 [connection signal="area_entered" from="General/HeliDetector" to="StateMachine/Move" method="_on_heli_detector_area_entered"]
 

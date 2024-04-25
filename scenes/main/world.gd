@@ -10,7 +10,7 @@ func _input(event):
 		var tile_mouse_pos: Vector2i = tile_map.local_to_map(mouse_pos)
 		
 		# The atlas coord of the dirt tile in the tileset. 
-		var dirt_atlas_coord : Vector2i = Vector2i(13, 7)
+		#var dirt_atlas_coord : Vector2i = Vector2i(13, 7)
 		
 		# Try and till the selected tile. 
 		if retrieve_custom_data(tile_mouse_pos, "can_till", 0):
