@@ -1,10 +1,16 @@
 extends CharacterBody2D
 
+# General 
 @onready var state_machine: Node = $StateMachine
+@onready var animator: AnimationPlayer = $General/Animator
+@onready var animator_2: AnimationPlayer = $General/Animator2
 @onready var center_marker = $General/CenterMarker
+
+
 
 # Components.
 @onready var velocity_component: VelocityComponent = $Components/VelocityComponent
+
 
 func _ready() -> void:
 	state_machine.init(self) 

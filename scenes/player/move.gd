@@ -19,9 +19,7 @@ func physics_process(delta):
 	if actor.velocity.x == 0: transition.emit(self, 'idle') 
 	
 func on_input(event: InputEvent): 
-	if event.is_action_pressed("jump"): 
-		if actor.jump_component.try_to_jump(): 
-			transition.emit(self, 'jump')
+	if event.is_action_pressed("jump"): actor.jump_component.try_to_jump()
 			
 	elif event.is_action_pressed('interact') and actor.is_touching_helipod(): 
 		transition.emit(self, 'flying')

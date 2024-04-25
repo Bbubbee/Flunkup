@@ -9,7 +9,7 @@ script = ExtResource("1_l2q5f")
 one_shot = true
 
 [node name="BufferTimer" type="Timer" parent="."]
-wait_time = 0.1
+wait_time = 0.2
 one_shot = true
 
 [connection signal="timeout" from="CoyoteTimer" to="." method="_on_coyote_timer_timeout"]

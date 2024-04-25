@@ -22,13 +22,8 @@ func handle_movement(delta):
 
 ## Flip the nodes to face wherever the player is moving. 
 func flip_nodes(): 
-	if velocity.x > 0: 
-		sprite.flip_h = false 
-		#heli_pod.position.x = -4
-		
-	elif velocity.x < 0: 
-		sprite.flip_h = true 
-		#heli_pod.position.x = 4
+	if velocity.x > 0: sprite.flip_h = false 
+	elif velocity.x < 0: sprite.flip_h = true 
 		
 @onready var heli_detector = $General/HeliDetector
 

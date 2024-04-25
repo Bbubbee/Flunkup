@@ -2,6 +2,16 @@ extends Node2D
 
 @onready var tile_map: TileMap = $TempTilemap
 
+@onready var dirt_atlas_coord : Vector2i = Vector2i(13, 7)
+
+
+func _ready():
+	Events.process_tile.connect(_on_process_tile)
+
+func _on_process_tile(tile_pos: Vector2i): 
+	tile_map.set_cell(0, tile_pos, 0, dirt_atlas_coord)
+	
+
 
 func _input(event):
 	if event.is_action_pressed('left_click'): 
@@ -10,20 +20,18 @@ func _input(event):
 		var tile_mouse_pos: Vector2i = tile_map.local_to_map(mouse_pos)
 		
 		# The atlas coord of the dirt tile in the tileset. 
-		#var dirt_atlas_coord : Vector2i = Vector2i(13, 7)
 		
 		# Try and till the selected tile. 
 		if retrieve_custom_data(tile_mouse_pos, "can_till", 0):
 			# Position helipod one tile above selected tile. 
 			var new_tile_pos = Vector2i(tile_mouse_pos.x, tile_mouse_pos.y-2)
-			Events.position_helipod.emit(tile_map.map_to_local(new_tile_pos))
+			Events.position_helipod.emit(tile_map.map_to_local(new_tile_pos), tile_mouse_pos)
+			
 			
 			# Till the tile!
 			#tile_map.set_cell(0, tile_mouse_pos, 0, dirt_atlas_coord)
 
 			
-
-
 ## Checks if the selected tile contains the specified custom data.
 ## Returns true or false. 
 ## @param: tile_mouse_pos    = the position of the selected tile. 

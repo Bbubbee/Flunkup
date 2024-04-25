@@ -1,4 +1,4 @@
-[gd_scene load_steps=17 format=3 uid="uid://dkwhb1psqv167"]
+[gd_scene load_steps=18 format=3 uid="uid://dkwhb1psqv167"]
 
 [ext_resource type="Texture2D" uid="uid://wj10ixtrxqlm" path="res://assets/player/heli/heli-Sheet.png" id="1_7dqjs"]
 [ext_resource type="Script" path="res://scenes/player/helipod/helipod.gd" id="1_7wsn7"]
@@ -64,6 +64,9 @@ _data = {
 "fly": SubResource("Animation_bkn3n")
 }
 
+[sub_resource type="Animation" id="Animation_gwjra"]
+resource_name = "fly"
+
 [sub_resource type="Animation" id="Animation_n25uy"]
 resource_name = "shake"
 length = 0.7
@@ -98,6 +101,7 @@ tracks/0/keys = {
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_0adr2"]
 _data = {
 "RESET": SubResource("Animation_ee3wm"),
+"fly": SubResource("Animation_gwjra"),
 "shake": SubResource("Animation_n25uy")
 }
 
@@ -133,7 +137,6 @@ autoplay = "fly"
 libraries = {
 "": SubResource("AnimationLibrary_0adr2")
 }
-autoplay = "RESET"
 
 [node name="PlayerDetector" type="Area2D" parent="General"]
 collision_layer = 4
@@ -149,8 +152,8 @@ debug_color = Color(0.25098, 0.619608, 0.4, 0.419608)
 [node name="VelocityComponent" parent="Components" node_paths=PackedStringArray("actor") instance=ExtResource("3_51yha")]
 actor = NodePath("../..")
 speed = 150.0
-acceleration = 400.0
-friction = 10000.0
+acceleration = 100000.0
+friction = 500.0
 
 [node name="StateMachine" parent="." node_paths=PackedStringArray("initial_state") instance=ExtResource("3_jr0lj")]
 initial_state = NodePath("Idle")
