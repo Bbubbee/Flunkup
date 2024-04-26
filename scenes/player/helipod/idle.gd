@@ -10,7 +10,7 @@ func physics_process(delta: float) -> void:
 
 
 func on_input(event: InputEvent): 
-	# Go to where the mouse was clicked. 
+	# Go to where the mouse was right clicked. 
 	if event.is_action_pressed('right_click'):
 		transition.emit(self, 'move') 
 

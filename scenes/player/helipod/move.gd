@@ -19,23 +19,24 @@ func enter(_enter_params = null):
 	else: 
 		target = actor.get_global_mouse_position()
 		tile_was_clicked = false 
-		
+	
 	direction = Globals.get_direction_to_target(actor.center_marker.global_position, target)
 	distance = Globals.get_distance_between_two_targets(actor.center_marker.global_position, target)
 
 
 func physics_process(delta: float) -> void:
-	# Move towards the mouse's last clicked position. 
+	# Move towards the mouse's last right clicked position. 
 	direction = Globals.get_direction_to_target(actor.center_marker.global_position, target)	
 	distance = Globals.get_distance_between_two_targets(actor.center_marker.global_position, target) 
 	
-	# TODO: Change mouse click position detection. 
+	# TODO: Change how far helipod stops from the target. 
 	# Stop when near target. 
 	if distance < 10: 
 		if tile_was_clicked:
 			# Tell the world to process the tile (till or plant) 
 			actor.animator_2.play('shake')			
 			Events.process_tile.emit(original_tile)
+		
 		transition.emit(self, 'idle')
 	
 	actor.velocity_component.move_freely(delta, direction)

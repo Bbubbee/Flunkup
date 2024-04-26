@@ -32,7 +32,6 @@ texture = ExtResource("1_6rugr")
 hframes = 2
 
 [node name="Camera" type="Camera2D" parent="General"]
-zoom = Vector2(1.5, 1.5)
 
 [node name="HeliDetector" type="Area2D" parent="General"]
 collision_layer = 0
@@ -49,7 +48,8 @@ debug_color = Color(0.27451, 0.619608, 0.34902, 0.419608)
 script = ExtResource("4_hq8ke")
 flight_gravity = 200.0
 fly_up_speed = 100.0
-fly_down_speed = 100.0
+fly_down_speed = 200.0
+flight_acceleration = 400.0
 actor = NodePath("../..")
 friction = 600.0
 
