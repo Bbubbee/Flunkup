@@ -150,7 +150,7 @@ debug_color = Color(0.25098, 0.619608, 0.4, 0.419608)
 actor = NodePath("../..")
 speed = 150.0
 acceleration = 400.0
-friction = 10000.0
+friction = 1000.0
 
 [node name="StateMachine" parent="." node_paths=PackedStringArray("initial_state") instance=ExtResource("3_jr0lj")]
 initial_state = NodePath("Idle")
@@ -166,5 +166,7 @@ script = ExtResource("7_a8cui")
 
 [node name="Carrying" type="Node" parent="StateMachine"]
 script = ExtResource("7_r3ixs")
+
+[connection signal="animation_finished" from="General/Animator2" to="StateMachine/Action" method="_on_animator_2_animation_finished"]
 
 [editable path="StateMachine"]

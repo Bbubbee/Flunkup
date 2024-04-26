@@ -10,7 +10,7 @@ config_version=5
 
 [application]
 
-config/name="Flunker"
+config/name="Flunkup"
 run/main_scene="res://scenes/main/world.tscn"
 config/features=PackedStringArray("4.2", "Mobile")
 config/icon="res://assets/tiles/icon.svg"

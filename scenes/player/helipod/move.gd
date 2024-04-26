@@ -31,13 +31,13 @@ func physics_process(delta: float) -> void:
 	
 	# TODO: Change how far helipod stops from the target. 
 	# Stop when near target. 
-	if distance < 10: 
+	if distance < 5: 
 		if tile_was_clicked:
 			# Tell the world to process the tile (till or plant) 
-			actor.animator_2.play('shake')			
-			Events.process_tile.emit(original_tile)
-		
-		transition.emit(self, 'idle')
+			transition.emit(self, 'action', original_tile)
+			#Events.process_tile.emit(original_tile)
+		else:
+			transition.emit(self, 'idle')
 	
 	actor.velocity_component.move_freely(delta, direction)
 	actor.move_and_slide()

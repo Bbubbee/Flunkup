@@ -1,7 +1,8 @@
-[gd_scene load_steps=13 format=3 uid="uid://b6sepyerpol16"]
+[gd_scene load_steps=14 format=3 uid="uid://b6sepyerpol16"]
 
 [ext_resource type="Texture2D" uid="uid://kvnd80adhhya" path="res://assets/player/player-Sheet.png" id="1_6rugr"]
 [ext_resource type="Script" path="res://scenes/player/player.gd" id="1_e41gv"]
+[ext_resource type="PackedScene" uid="uid://beccf3oeappg0" path="res://scenes/ui/progress_bar.tscn" id="3_ijswr"]
 [ext_resource type="PackedScene" uid="uid://dtg7dr1jl4ced" path="res://utils/components/velocity_component.tscn" id="3_wmg33"]
 [ext_resource type="PackedScene" uid="uid://hgfcjwgpa70n" path="res://utils/components/jump_component.tscn" id="4_6lws1"]
 [ext_resource type="Script" path="res://utils/components/players_velocity_component.gd" id="4_hq8ke"]
@@ -23,19 +24,26 @@ collision_layer = 2
 script = ExtResource("1_e41gv")
 
 [node name="PhysicsShape" type="CollisionShape2D" parent="."]
+visible = false
 shape = SubResource("CapsuleShape2D_kayot")
+metadata/_edit_lock_ = true
 
 [node name="General" type="Node2D" parent="."]
 
 [node name="Sprite" type="Sprite2D" parent="General"]
 texture = ExtResource("1_6rugr")
 hframes = 2
+metadata/_edit_lock_ = true
 
 [node name="Camera" type="Camera2D" parent="General"]
+zoom = Vector2(0.8, 0.8)
+metadata/_edit_lock_ = true
 
 [node name="HeliDetector" type="Area2D" parent="General"]
+visible = false
 collision_layer = 0
 collision_mask = 4
+metadata/_edit_lock_ = true
 
 [node name="HeliDetectorShape" type="CollisionShape2D" parent="General/HeliDetector"]
 position = Vector2(0.5, -0.5)
@@ -43,11 +51,12 @@ shape = SubResource("RectangleShape2D_h4udx")
 debug_color = Color(0.27451, 0.619608, 0.34902, 0.419608)
 
 [node name="Components" type="Node2D" parent="."]
+metadata/_edit_lock_ = true
 
 [node name="VelocityComponent" parent="Components" node_paths=PackedStringArray("actor") instance=ExtResource("3_wmg33")]
 script = ExtResource("4_hq8ke")
 flight_gravity = 200.0
-fly_up_speed = 100.0
+fly_up_speed = 80.0
 fly_down_speed = 200.0
 flight_acceleration = 400.0
 actor = NodePath("../..")
@@ -70,6 +79,23 @@ script = ExtResource("8_3fu5c")
 
 [node name="Jump" type="Node" parent="StateMachine"]
 script = ExtResource("10_ijwcp")
+
+[node name="UI" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="HelipodStaminaBar" parent="UI" instance=ExtResource("3_ijswr")]
+visible = false
+layout_mode = 0
+offset_left = -18.0
+offset_top = -53.0
+offset_right = 17.0
+offset_bottom = -47.0
+max_value = 150.0
+step = 0.1
+value = 100.0
 
 [connection signal="area_entered" from="General/HeliDetector" to="StateMachine/Move" method="_on_heli_detector_area_entered"]
 

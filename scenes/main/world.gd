@@ -2,14 +2,14 @@ extends Node2D
 
 @onready var tile_map: TileMap = $TempTilemap
 
-@onready var dirt_atlas_coord : Vector2i = Vector2i(13, 7)
+@onready var dirt_atlas_coord : Vector2i = Vector2i(20, 0) # Vector2i(13, 7)
 
 
 func _ready():
 	Events.process_tile.connect(_on_process_tile)
 
 func _on_process_tile(tile_pos: Vector2i): 
-	tile_map.set_cell(0, tile_pos, 0, dirt_atlas_coord)
+	tile_map.set_cell(1, tile_pos, 0, dirt_atlas_coord)
 	
 
 

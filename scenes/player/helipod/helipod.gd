@@ -4,7 +4,7 @@ extends CharacterBody2D
 @onready var state_machine: Node = $StateMachine
 @onready var animator: AnimationPlayer = $General/Animator
 @onready var animator_2: AnimationPlayer = $General/Animator2
-@onready var center_marker = $General/CenterMarker
+@onready var center_marker: Marker2D = $General/CenterMarker
 
 
 
