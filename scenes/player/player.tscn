@@ -6,8 +6,8 @@
 [ext_resource type="PackedScene" uid="uid://dtg7dr1jl4ced" path="res://utils/components/velocity_component.tscn" id="3_wmg33"]
 [ext_resource type="PackedScene" uid="uid://hgfcjwgpa70n" path="res://utils/components/jump_component.tscn" id="4_6lws1"]
 [ext_resource type="Script" path="res://utils/components/players_velocity_component.gd" id="4_hq8ke"]
-[ext_resource type="PackedScene" uid="uid://cpd203hmfijxs" path="res://utils/player_state_machine.tscn" id="5_ppxvu"]
 [ext_resource type="Script" path="res://scenes/player/states/idle.gd" id="6_paj38"]
+[ext_resource type="PackedScene" uid="uid://cpd203hmfijxs" path="res://utils/states/player_state_machine.tscn" id="6_uwyjg"]
 [ext_resource type="Script" path="res://scenes/player/move.gd" id="7_0j4yr"]
 [ext_resource type="Script" path="res://scenes/player/flying.gd" id="8_3fu5c"]
 [ext_resource type="Script" path="res://scenes/player/jump.gd" id="10_ijwcp"]
@@ -65,7 +65,7 @@ friction = 600.0
 [node name="JumpComponent" parent="Components" node_paths=PackedStringArray("actor") instance=ExtResource("4_6lws1")]
 actor = NodePath("../..")
 
-[node name="StateMachine" parent="." node_paths=PackedStringArray("initial_state") instance=ExtResource("5_ppxvu")]
+[node name="StateMachine" parent="." node_paths=PackedStringArray("initial_state") instance=ExtResource("6_uwyjg")]
 initial_state = NodePath("Idle")
 
 [node name="Idle" type="Node" parent="StateMachine"]

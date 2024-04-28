@@ -10,7 +10,7 @@ func enter(_enter_params = null):
 	Events.player_touched_heli.emit(true)
 	
 	helipod_stamina_bar.visible = true
-	
+	helipod_stamina_bar.is_active = true
 	
 
 
@@ -25,7 +25,7 @@ func physics_process(delta):
 	
 	# Fly up or down. 
 	if Input.is_action_pressed("jump") and helipod_stamina_bar.value > 0.5: 
-		helipod_stamina_bar.value -= 1
+		helipod_stamina_bar.deplete(1)
 
 		actor.velocity_component.fly(delta)
 		actor.velocity_component.handle_flying_gravity(delta)
@@ -34,12 +34,12 @@ func physics_process(delta):
 	# Don't apply gravity when flying downwards. 
 	elif Input.is_action_pressed('down'): 
 		actor.velocity_component.fly_down(delta)
-		helipod_stamina_bar.value += 0.5
+		helipod_stamina_bar.replenish(0.5)
 	else: 
 		actor.velocity_component.handle_flying_gravity(delta)
-		helipod_stamina_bar.value += 0.5
+		helipod_stamina_bar.replenish(0.5)
 	
-	if actor.is_on_floor(): helipod_stamina_bar.value += 1
+	if actor.is_on_floor(): helipod_stamina_bar.replenish(0.5)
 	
 
 func on_input(event):
@@ -57,6 +57,7 @@ func on_input(event):
 
 func exit():
 	helipod_stamina_bar.visible = false
+	helipod_stamina_bar.is_active = false
 	
 		
 		
