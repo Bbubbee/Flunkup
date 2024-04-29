@@ -7,6 +7,7 @@ extends CharacterBody2D
 @onready var center_marker: Marker2D = $General/CenterMarker
 
 @export var tile_map: TileMap 
+@export var player: Player
 
 # Components.
 @onready var velocity_component: VelocityComponent = $Components/VelocityComponent
@@ -17,8 +18,6 @@ func _ready() -> void:
 	Events.player_touched_heli.connect(_on_player_touched_heli)
 
 func _on_player_touched_heli(held: bool):
-	if held:
-		state_machine.force_transition('carrying')
-	else: 
-		state_machine.force_transition('idle')
+	if held: state_machine.force_transition('carrying')
+	else: state_machine.force_transition('idle')
 

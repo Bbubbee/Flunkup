@@ -13,5 +13,5 @@ func physics_process(delta: float) -> void:
 
 func _on_animator_2_animation_finished(anim_name):
 	if anim_name == 'shake': 
-		Events.process_tile.emit(tile_to_act_on)	
-		transition.emit(self, 'idle')
+		Events.process_tile.emit(tile_to_act_on)			
+		transition.emit(self, 'idle')		

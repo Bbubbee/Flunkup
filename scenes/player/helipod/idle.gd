@@ -13,6 +13,12 @@ func on_input(event: InputEvent):
 	# Go to where the mouse was right clicked. 
 	if event.is_action_pressed('right_click'):
 		transition.emit(self, 'move') 
+	
+	if event.is_action_pressed("change_heli_mode"):
+		transition.emit(self, 'follow') 
+		Events.set_mode.emit(true)
+	
+	
 
 # A tile has been pressed. Go to that tile. 
 func _on_position_helipod(tile_pos: Vector2, original_tile_pos: Vector2i):

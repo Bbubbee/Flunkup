@@ -17,7 +17,7 @@ func physics_process(delta):
 		transition.emit(self, 'move')
 		
 func on_input(event: InputEvent): 			
-	if event.is_action_pressed('interact') and actor.is_touching_helipod(): 
+	if event.is_action_pressed('up') and actor.is_touching_helipod(): 
 		transition.emit(self, 'flying')
 	
 	if event.is_action_pressed("jump"): 

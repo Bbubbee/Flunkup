@@ -24,8 +24,8 @@ func move_freely(delta: float, direction: Vector2):
 
 
 func stop_freely(delta: float):
-		actor.velocity.x = move_toward(actor.velocity.x, 0, friction*delta)
-		actor.velocity.y = move_toward(actor.velocity.y, 0, friction*delta)
+	actor.velocity.x = move_toward(actor.velocity.x, 0, friction*delta)
+	actor.velocity.y = move_toward(actor.velocity.y, 0, friction*delta)
 
 func handle_gravity(delta: float): 
 	if not actor.is_on_floor(): actor.velocity.y += gravity * delta

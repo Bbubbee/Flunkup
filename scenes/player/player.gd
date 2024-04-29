@@ -13,6 +13,8 @@ class_name Player
 
 func _ready():
 	state_machine.init(self)
+	Events.set_mode.connect(set_mode)
+	
 	
 func handle_movement(delta): 
 	var direction = Input.get_axis("left", "right")
@@ -30,6 +32,14 @@ func flip_nodes():
 func is_touching_helipod(): 
 	if heli_detector.has_overlapping_areas(): return true
 	else: return false
+
+func set_mode(active: bool):
+	can_plant = active
+	
+var can_plant: bool = false
+func _input(event: InputEvent) -> void:
+	if event.is_action_pressed("left_click") and can_plant:
+		Events.plant_on_tile.emit(self.get_global_mouse_position())
 
 
 

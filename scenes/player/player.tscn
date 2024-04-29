@@ -74,11 +74,11 @@ script = ExtResource("6_paj38")
 [node name="Move" type="Node" parent="StateMachine"]
 script = ExtResource("7_0j4yr")
 
-[node name="Flying" type="Node" parent="StateMachine"]
-script = ExtResource("8_3fu5c")
-
 [node name="Jump" type="Node" parent="StateMachine"]
 script = ExtResource("10_ijwcp")
+
+[node name="Flying" type="Node" parent="StateMachine"]
+script = ExtResource("8_3fu5c")
 
 [node name="UI" type="Control" parent="."]
 layout_mode = 3

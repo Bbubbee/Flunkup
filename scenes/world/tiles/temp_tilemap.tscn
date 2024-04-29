@@ -383,7 +383,7 @@ texture = ExtResource("1_ll7he")
 13:7/0/physics_layer_0/linear_velocity = Vector2(0, 0)
 13:7/0/physics_layer_0/angular_velocity = 0.0
 13:7/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
-13:7/0/custom_data_0 = true
+13:7/0/custom_data_1 = true
 18:1/0 = 0
 18:1/0/texture_origin = Vector2i(0, 16)
 18:1/0/physics_layer_0/linear_velocity = Vector2(0, 0)
@@ -399,6 +399,18 @@ texture = ExtResource("1_ll7he")
 19:0/0/texture_origin = Vector2i(0, 16)
 19:0/0/physics_layer_0/linear_velocity = Vector2(0, 0)
 19:0/0/physics_layer_0/angular_velocity = 0.0
+18:2/0 = 0
+18:2/0/physics_layer_0/linear_velocity = Vector2(0, 0)
+18:2/0/physics_layer_0/angular_velocity = 0.0
+19:2/0 = 0
+19:2/0/physics_layer_0/linear_velocity = Vector2(0, 0)
+19:2/0/physics_layer_0/angular_velocity = 0.0
+20:2/0 = 0
+20:2/0/physics_layer_0/linear_velocity = Vector2(0, 0)
+20:2/0/physics_layer_0/angular_velocity = 0.0
+21:2/0 = 0
+21:2/0/physics_layer_0/linear_velocity = Vector2(0, 0)
+21:2/0/physics_layer_0/angular_velocity = 0.0
 
 [sub_resource type="TileSet" id="TileSet_djlkw"]
 physics_layer_0/collision_layer = 1
@@ -408,6 +420,8 @@ terrain_set_0/terrain_0/name = "autotile"
 terrain_set_0/terrain_0/color = Color(0.415686, 0.0431373, 0.439216, 1)
 custom_data_layer_0/name = "can_till"
 custom_data_layer_0/type = 1
+custom_data_layer_1/name = "can_plant"
+custom_data_layer_1/type = 1
 sources/0 = SubResource("TileSetAtlasSource_a4a6j")
 
 [node name="TempTilemap" type="TileMap"]

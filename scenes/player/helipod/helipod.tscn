@@ -1,4 +1,4 @@
-[gd_scene load_steps=17 format=3 uid="uid://dkwhb1psqv167"]
+[gd_scene load_steps=18 format=3 uid="uid://dkwhb1psqv167"]
 
 [ext_resource type="Texture2D" uid="uid://wj10ixtrxqlm" path="res://assets/player/heli/heli-Sheet.png" id="1_7dqjs"]
 [ext_resource type="Script" path="res://scenes/player/helipod/helipod.gd" id="1_7wsn7"]
@@ -8,6 +8,7 @@
 [ext_resource type="Script" path="res://scenes/player/helipod/move.gd" id="5_fh3jp"]
 [ext_resource type="Script" path="res://scenes/player/helipod/action.gd" id="7_a8cui"]
 [ext_resource type="Script" path="res://scenes/player/helipod/carrying.gd" id="7_r3ixs"]
+[ext_resource type="Script" path="res://scenes/player/helipod/follow.gd" id="9_rsl7h"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_wnanp"]
 radius = 7.0
@@ -166,6 +167,9 @@ script = ExtResource("7_a8cui")
 
 [node name="Carrying" type="Node" parent="StateMachine"]
 script = ExtResource("7_r3ixs")
+
+[node name="Follow" type="Node" parent="StateMachine"]
+script = ExtResource("9_rsl7h")
 
 [connection signal="animation_finished" from="General/Animator2" to="StateMachine/Action" method="_on_animator_2_animation_finished"]
 

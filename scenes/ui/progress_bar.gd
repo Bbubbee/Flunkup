@@ -3,14 +3,14 @@ extends TextureProgressBar
 func _ready():
 	value = max_value
 
-func _physics_process(delta):
-	auto_replenish(delta)
+func _physics_process(_delta: float):
+	auto_replenish()
 	
 var is_active: bool = false
 
 # Automatically replenish progress when it is not active. 
-func auto_replenish(change: float):
-	if not is_active: replenish(0.5)
+func auto_replenish():
+	if not is_active: replenish(2)
 
 func deplete(change: float): 
 	value -= change

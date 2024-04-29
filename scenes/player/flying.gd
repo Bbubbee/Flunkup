@@ -2,6 +2,7 @@ extends PlayerState
 
 @onready var helipod_stamina_bar: TextureProgressBar = $"../../UI/HelipodStaminaBar"
 
+
 func enter(_enter_params = null):
 	actor.velocity.y = 0
 	actor.sprite.frame = 1
@@ -12,7 +13,6 @@ func enter(_enter_params = null):
 	helipod_stamina_bar.visible = true
 	helipod_stamina_bar.is_active = true
 	
-
 
 func physics_process(delta):
 	# Move left or right. 
@@ -29,7 +29,6 @@ func physics_process(delta):
 
 		actor.velocity_component.fly(delta)
 		actor.velocity_component.handle_flying_gravity(delta)
-		
 		
 	# Don't apply gravity when flying downwards. 
 	elif Input.is_action_pressed('down'): 
