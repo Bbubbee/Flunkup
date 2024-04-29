@@ -10,6 +10,13 @@ var tileset_layer: int = 0
 func _ready():
 	Events.process_tile.connect(_on_process_tile)
 	Events.plant_on_tile.connect(_on_plant_on_tile)
+	
+	Events.increase_day.connect(_on_increase_day)
+	
+func _on_increase_day():
+	pass
+	
+	# Find a way to get all plant tiles. 
 
 
 ## Plant a crop on top of this tile. 

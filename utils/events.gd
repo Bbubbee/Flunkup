@@ -9,4 +9,6 @@ signal plant_on_tile(pos: Vector2)
 
 signal set_mode(active: bool)
 
+signal increase_day
+
  
