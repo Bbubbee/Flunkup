@@ -6,3 +6,4 @@
 script = ExtResource("1_whiey")
 name = "carrot"
 growth_days = 2
+atlas_coord = Rect2i(288, 32, 64, 16)

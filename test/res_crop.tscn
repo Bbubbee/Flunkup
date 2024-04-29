@@ -1,0 +1,15 @@
+[gd_scene load_steps=5 format=3 uid="uid://c826rgyfnray0"]
+
+[ext_resource type="Script" path="res://test/res_crop.gd" id="1_fukji"]
+[ext_resource type="Texture2D" uid="uid://n4rs7wx4m3sh" path="res://assets/tiles/Tileset.png" id="1_th2g5"]
+[ext_resource type="Resource" uid="uid://dy2rvcv3xuhdy" path="res://resources/crops/wheat.tres" id="3_th0ve"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_e6b7k"]
+atlas = ExtResource("1_th2g5")
+
+[node name="ResCrop" type="Sprite2D"]
+texture = SubResource("AtlasTexture_e6b7k")
+hframes = 4
+frame = 3
+script = ExtResource("1_fukji")
+crop = ExtResource("3_th0ve")

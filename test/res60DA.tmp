@@ -1,0 +1,11 @@
+[gd_scene load_steps=4 format=3 uid="uid://c826rgyfnray0"]
+
+[ext_resource type="Script" path="res://test/res_crop.gd" id="1_fukji"]
+[ext_resource type="Texture2D" uid="uid://n4rs7wx4m3sh" path="res://assets/tiles/Tileset.png" id="1_th2g5"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_k5ixw"]
+atlas = ExtResource("1_th2g5")
+
+[node name="ResCrop" type="Sprite2D"]
+texture = SubResource("AtlasTexture_k5ixw")
+script = ExtResource("1_fukji")

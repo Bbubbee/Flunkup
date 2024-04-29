@@ -1,0 +1,9 @@
+[gd_resource type="Resource" script_class="Crop" load_steps=2 format=3 uid="uid://dy2rvcv3xuhdy"]
+
+[ext_resource type="Script" path="res://resources/crops/crop.gd" id="1_afvhd"]
+
+[resource]
+script = ExtResource("1_afvhd")
+name = "wheat"
+growth_days = 2
+atlas_coord = Rect2i(288, 48, 64, 16)
