@@ -1,0 +1,22 @@
+[gd_scene load_steps=5 format=3 uid="uid://bj5npg275k1dq"]
+
+[ext_resource type="Texture2D" uid="uid://dyoeewqdgjdsm" path="res://assets/ui/item-frame-Sheet.png" id="1_ibipo"]
+[ext_resource type="Script" path="res://scenes/ui/item_frame.gd" id="2_0csvb"]
+[ext_resource type="Texture2D" uid="uid://3oaodjlguj4a" path="res://assets/ui/selected-slot-Sheet.png" id="3_xspfy"]
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_j6hd3"]
+texture = ExtResource("1_ibipo")
+
+[node name="ItemFrame" type="PanelContainer"]
+custom_minimum_size = Vector2(16, 16)
+theme_override_styles/panel = SubResource("StyleBoxTexture_j6hd3")
+script = ExtResource("2_0csvb")
+
+[node name="ItemIcon" type="TextureRect" parent="."]
+unique_name_in_owner = true
+layout_mode = 2
+expand_mode = 2
+
+[node name="SelectedTexture" type="TextureRect" parent="."]
+layout_mode = 2
+texture = ExtResource("3_xspfy")

@@ -11,4 +11,6 @@ signal set_mode(active: bool)
 
 signal increase_day
 
+signal set_held_item(item: Crop)
+
  

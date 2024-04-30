@@ -1,0 +1,73 @@
+[gd_scene load_steps=5 format=3 uid="uid://clal4kl23fuma"]
+
+[ext_resource type="Texture2D" uid="uid://cll7hlyr8g70s" path="res://assets/ui/hotbar-frame-Sheet.png" id="1_ktpf6"]
+[ext_resource type="Script" path="res://scenes/ui/hot_bar.gd" id="2_c2xyb"]
+[ext_resource type="PackedScene" uid="uid://bj5npg275k1dq" path="res://scenes/ui/item_frame.tscn" id="3_pky80"]
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_exkwf"]
+texture = ExtResource("1_ktpf6")
+texture_margin_left = 2.0
+texture_margin_top = 1.0
+texture_margin_right = 2.0
+texture_margin_bottom = 1.0
+
+[node name="HotBar" type="PanelContainer"]
+custom_minimum_size = Vector2(16, 0)
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -121.0
+offset_top = -25.0
+offset_right = 121.0
+offset_bottom = -3.0
+grow_horizontal = 2
+grow_vertical = 0
+theme_override_styles/panel = SubResource("StyleBoxTexture_exkwf")
+script = ExtResource("2_c2xyb")
+
+[node name="MarginContainer" type="MarginContainer" parent="."]
+layout_mode = 2
+theme_override_constants/margin_top = 2
+theme_override_constants/margin_bottom = 2
+
+[node name="ItemContainer" type="HBoxContainer" parent="MarginContainer"]
+layout_mode = 2
+alignment = 1
+
+[node name="ItemFrame" parent="MarginContainer/ItemContainer" instance=ExtResource("3_pky80")]
+layout_mode = 2
+
+[node name="ItemFrame2" parent="MarginContainer/ItemContainer" instance=ExtResource("3_pky80")]
+layout_mode = 2
+
+[node name="ItemFrame3" parent="MarginContainer/ItemContainer" instance=ExtResource("3_pky80")]
+layout_mode = 2
+
+[node name="ItemFrame4" parent="MarginContainer/ItemContainer" instance=ExtResource("3_pky80")]
+layout_mode = 2
+
+[node name="ItemFrame5" parent="MarginContainer/ItemContainer" instance=ExtResource("3_pky80")]
+layout_mode = 2
+
+[node name="ItemFrame6" parent="MarginContainer/ItemContainer" instance=ExtResource("3_pky80")]
+layout_mode = 2
+
+[node name="ItemFrame7" parent="MarginContainer/ItemContainer" instance=ExtResource("3_pky80")]
+layout_mode = 2
+
+[node name="ItemFrame8" parent="MarginContainer/ItemContainer" instance=ExtResource("3_pky80")]
+layout_mode = 2
+
+[node name="ItemFrame9" parent="MarginContainer/ItemContainer" instance=ExtResource("3_pky80")]
+layout_mode = 2
+
+[node name="ItemFrame10" parent="MarginContainer/ItemContainer" instance=ExtResource("3_pky80")]
+layout_mode = 2
+
+[node name="ItemFrame11" parent="MarginContainer/ItemContainer" instance=ExtResource("3_pky80")]
+layout_mode = 2
+
+[node name="ItemFrame12" parent="MarginContainer/ItemContainer" instance=ExtResource("3_pky80")]
+layout_mode = 2

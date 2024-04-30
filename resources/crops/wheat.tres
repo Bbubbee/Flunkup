@@ -1,9 +1,11 @@
-[gd_resource type="Resource" script_class="Crop" load_steps=2 format=3 uid="uid://dy2rvcv3xuhdy"]
+[gd_resource type="Resource" script_class="Crop" load_steps=3 format=3 uid="uid://dy2rvcv3xuhdy"]
 
 [ext_resource type="Script" path="res://resources/crops/crop.gd" id="1_afvhd"]
+[ext_resource type="Texture2D" uid="uid://s8xcvujckusf" path="res://assets/crops/wheat-Sheet.png" id="1_bt2sc"]
 
 [resource]
 script = ExtResource("1_afvhd")
 name = "wheat"
-growth_days = 2
 atlas_coord = Rect2i(288, 48, 64, 16)
+days_until_adult = 0
+icon = ExtResource("1_bt2sc")

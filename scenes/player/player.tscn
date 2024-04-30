@@ -1,4 +1,4 @@
-[gd_scene load_steps=14 format=3 uid="uid://b6sepyerpol16"]
+[gd_scene load_steps=15 format=3 uid="uid://b6sepyerpol16"]
 
 [ext_resource type="Texture2D" uid="uid://kvnd80adhhya" path="res://assets/player/player-Sheet.png" id="1_6rugr"]
 [ext_resource type="Script" path="res://scenes/player/player.gd" id="1_e41gv"]
@@ -11,6 +11,7 @@
 [ext_resource type="Script" path="res://scenes/player/move.gd" id="7_0j4yr"]
 [ext_resource type="Script" path="res://scenes/player/flying.gd" id="8_3fu5c"]
 [ext_resource type="Script" path="res://scenes/player/jump.gd" id="10_ijwcp"]
+[ext_resource type="PackedScene" uid="uid://clal4kl23fuma" path="res://scenes/ui/hot_bar.tscn" id="12_fr5c0"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_kayot"]
 radius = 6.0
@@ -96,6 +97,10 @@ offset_bottom = -47.0
 max_value = 150.0
 step = 0.1
 value = 100.0
+
+[node name="UIRoot" type="CanvasLayer" parent="."]
+
+[node name="HotBar" parent="UIRoot" instance=ExtResource("12_fr5c0")]
 
 [connection signal="area_entered" from="General/HeliDetector" to="StateMachine/Move" method="_on_heli_detector_area_entered"]
 

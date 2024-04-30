@@ -25,7 +25,7 @@ func on_input(event: InputEvent):
 			# Get the tile the mouse clicked on. 
 			var tile_pos = tile_map.get_valid_tile(actor.get_global_mouse_position())
 			if not tile_pos: return
-			
+
 			# Get two tiles above the selected tile. Get it's local position too. 
 			var local_pos = tile_map.map_to_local(Vector2i(tile_pos.x, tile_pos.y-2))
 			transition.emit(self, 'movetotile', {"target": local_pos, "original_tile": tile_pos})

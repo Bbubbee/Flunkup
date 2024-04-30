@@ -10,11 +10,9 @@ var plant_atlas_coord : Vector2i = Vector2i(21, 2) # Vector2i(13, 7)
 
 var tileset_layer: int = 0
 
-
 func _ready():
 	Events.process_tile.connect(_on_process_tile)
 	Events.plant_on_tile.connect(_on_plant_on_tile)
-
 
 const base_crop = preload("res://test/res_crop.tscn")
 @onready var crops = $Crops
@@ -45,6 +43,14 @@ func _on_process_tile(tile_pos: Vector2i):
 func get_valid_tile(pos: Vector2, custom_data_layer: String = "", layer: int = 0): 
 	var tile_pos: Vector2i = local_to_map(pos)
 	
+	# Hacky way to seeing if there exists a tile in this pos.
+	# May have to revamp later. 
+	var tile_source = get_cell_source_id(layer, tile_pos) 
+	if tile_source < 0: 
+		return false
+	
+	# If you want to check if a custom data layer is true or exists, you can. 
+	# Else, it will just return the tile pos. 
 	if custom_data_layer: 
 		if retrieve_custom_data(tile_pos, custom_data_layer, layer): return tile_pos
 		else: return false 
