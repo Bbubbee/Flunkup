@@ -1,11 +1,12 @@
-[gd_scene load_steps=18 format=3 uid="uid://dkwhb1psqv167"]
+[gd_scene load_steps=19 format=3 uid="uid://dkwhb1psqv167"]
 
 [ext_resource type="Texture2D" uid="uid://wj10ixtrxqlm" path="res://assets/player/heli/heli-Sheet.png" id="1_7dqjs"]
 [ext_resource type="Script" path="res://scenes/player/helipod/helipod.gd" id="1_7wsn7"]
 [ext_resource type="PackedScene" uid="uid://dtg7dr1jl4ced" path="res://utils/components/velocity_component.tscn" id="3_51yha"]
 [ext_resource type="Script" path="res://scenes/player/helipod/idle.gd" id="4_7yo7l"]
 [ext_resource type="PackedScene" uid="uid://dw5fdg8s00p7i" path="res://utils/states/state_machine.tscn" id="4_x768c"]
-[ext_resource type="Script" path="res://scenes/player/helipod/move.gd" id="5_fh3jp"]
+[ext_resource type="Script" path="res://scenes/player/helipod/move_to_mouse.gd" id="5_fh3jp"]
+[ext_resource type="Script" path="res://scenes/player/helipod/move_to_tile.gd" id="7_40bvn"]
 [ext_resource type="Script" path="res://scenes/player/helipod/action.gd" id="7_a8cui"]
 [ext_resource type="Script" path="res://scenes/player/helipod/carrying.gd" id="7_r3ixs"]
 [ext_resource type="Script" path="res://scenes/player/helipod/follow.gd" id="9_rsl7h"]
@@ -159,8 +160,11 @@ initial_state = NodePath("Idle")
 [node name="Idle" type="Node" parent="StateMachine"]
 script = ExtResource("4_7yo7l")
 
-[node name="Move" type="Node" parent="StateMachine"]
+[node name="MoveToMouse" type="Node" parent="StateMachine"]
 script = ExtResource("5_fh3jp")
+
+[node name="MoveToTile" type="Node" parent="StateMachine"]
+script = ExtResource("7_40bvn")
 
 [node name="Action" type="Node" parent="StateMachine"]
 script = ExtResource("7_a8cui")

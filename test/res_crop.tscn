@@ -2,14 +2,14 @@
 
 [ext_resource type="Script" path="res://test/res_crop.gd" id="1_fukji"]
 [ext_resource type="Texture2D" uid="uid://n4rs7wx4m3sh" path="res://assets/tiles/Tileset.png" id="1_th2g5"]
-[ext_resource type="Resource" uid="uid://dy2rvcv3xuhdy" path="res://resources/crops/wheat.tres" id="3_th0ve"]
+[ext_resource type="Resource" uid="uid://jdwt4t3gukqb" path="res://resources/crops/carrot.tres" id="3_la51h"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_e6b7k"]
 atlas = ExtResource("1_th2g5")
+region = Rect2(0, 0, 16, 16)
 
 [node name="ResCrop" type="Sprite2D"]
 texture = SubResource("AtlasTexture_e6b7k")
 hframes = 4
-frame = 3
 script = ExtResource("1_fukji")
-crop = ExtResource("3_th0ve")
+crop = ExtResource("3_la51h")
