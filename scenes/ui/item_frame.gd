@@ -3,12 +3,12 @@ extends PanelContainer
 @onready var item_icon = %ItemIcon
 @onready var selected_texture = $SelectedTexture
 
-var current_item: Crop 
+var current_item: Item 
 
 func _ready():
 	selected_texture.visible = false
 	
-func show_item(item: Crop): 
+func show_item(item: Item): 
 	current_item = item
 	item_icon.texture = item.icon 
 	

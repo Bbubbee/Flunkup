@@ -43,6 +43,10 @@ func on_input(event: InputEvent):
 			# Get two tiles above the selected tile. Get it's local position too. 
 			var local_pos = tile_map.map_to_local(Vector2i(tile_pos.x, tile_pos.y-2))
 			transition.emit(self, 'movetotile', {"target": local_pos, "original_tile": tile_pos})
+		
+	if event.is_action_pressed("change_heli_mode"):
+		transition.emit(self, 'follow') 
+		Events.set_mode.emit(true)
 
 	
 	

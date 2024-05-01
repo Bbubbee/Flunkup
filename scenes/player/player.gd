@@ -20,17 +20,20 @@ var inventory: Inventory = Inventory.new()
 
 
 func _ready():
+	# Connect signals.
+	Events.set_mode.connect(set_mode)
+	Events.set_held_item.connect(_on_set_held_item)
+	
 	# Inventory test. 
 	inventory.add_item(CARROT)
 	inventory.add_item(WHEAT)
 	hot_bar.init(inventory)
 	
 	state_machine.init(self)
-	Events.set_mode.connect(set_mode)
-	Events.set_held_item.connect(_on_set_held_item)
 
-var held_item: Crop
-func _on_set_held_item(item: Crop):
+
+var held_item: Item
+func _on_set_held_item(item: Item):
 	held_item = item
 	
 	

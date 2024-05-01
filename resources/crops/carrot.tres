@@ -2,7 +2,7 @@
 
 [ext_resource type="Texture2D" uid="uid://bt63bghbovuw4" path="res://assets/crops/carrot-icon-Sheet.png" id="1_pybyk"]
 [ext_resource type="Texture2D" uid="uid://m5y78n2ifvmi" path="res://assets/crops/carrot-Sheet.png" id="1_wb0dg"]
-[ext_resource type="Script" path="res://resources/crops/crop.gd" id="1_whiey"]
+[ext_resource type="Script" path="res://resources/crops/item.gd" id="1_whiey"]
 
 [resource]
 script = ExtResource("1_whiey")

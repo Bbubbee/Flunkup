@@ -3,7 +3,6 @@ extends PanelContainer
 @onready var item_container = $MarginContainer/ItemContainer
 
 
-
 func init(inventory: Inventory):
 	var length = inventory.get_items().size()
 	var i: int = 0
@@ -11,21 +10,20 @@ func init(inventory: Inventory):
 	for item in item_container.get_children():
 		item.show_item(inventory.content[i]) 
 		
-		i += 1 
-		
 		# Stop populating the hot bar items once the end of the inventory is reached,
 		# or the maximum number of items are reached.
 		# The number of items shouldn't exceed the carry limit anyways. 
+		i += 1 		
 		if i >= length or i >= 12: break
 		
 	# Select the first slot. 
 	item_container.get_child(0).select_slot(true)
 	
 
-
-
 func _input(event: InputEvent):
 	var hotbar_slot_pressed: int = 0
+	
+	# Select an item slot .
 	if event.is_action_pressed('1'):
 		hotbar_slot_pressed = 1
 	elif event.is_action_pressed('2'):
@@ -52,12 +50,11 @@ func _input(event: InputEvent):
 		hotbar_slot_pressed = 12
 	else: return 
 	
+	# Adjust index to select correct slot.
 	select_slot(hotbar_slot_pressed-1)
 
 
 func select_slot(num: int):
-	pass
-	
 	# Unselect all slots. 
 	for item in item_container.get_children():
 		item.select_slot(false)

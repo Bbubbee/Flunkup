@@ -14,11 +14,12 @@ func _ready():
 	Events.process_tile.connect(_on_process_tile)
 	Events.plant_on_tile.connect(_on_plant_on_tile)
 
-const base_crop = preload("res://test/res_crop.tscn")
+const base_crop = preload("res://scenes/crops/crop.tscn")
+
 @onready var crops = $Crops
 
 ## Plant a crop on top of this tile. 
-func _on_plant_on_tile(pos: Vector2, crop: Crop):
+func _on_plant_on_tile(pos: Vector2, crop: Item):
 	# Get tile positions. 
 	var tile_pos = local_to_map(pos)
 	var tile_above_pos = Vector2i(tile_pos.x, tile_pos.y-1)

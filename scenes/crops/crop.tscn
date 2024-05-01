@@ -1,0 +1,24 @@
+[gd_scene load_steps=5 format=3 uid="uid://c826rgyfnray0"]
+
+[ext_resource type="Texture2D" uid="uid://m5y78n2ifvmi" path="res://assets/crops/carrot-Sheet.png" id="1_kp2ee"]
+[ext_resource type="Script" path="res://scenes/crops/crop.gd" id="2_fqum8"]
+[ext_resource type="Resource" uid="uid://jdwt4t3gukqb" path="res://resources/crops/carrot.tres" id="3_th4st"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_d7527"]
+size = Vector2(14, 10)
+
+[node name="Crop" type="Sprite2D"]
+texture = ExtResource("1_kp2ee")
+hframes = 4
+script = ExtResource("2_fqum8")
+crop = ExtResource("3_th4st")
+
+[node name="Area2D" type="Area2D" parent="."]
+collision_layer = 0
+collision_mask = 4
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+position = Vector2(0, 3)
+shape = SubResource("RectangleShape2D_d7527")
+
+[connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]

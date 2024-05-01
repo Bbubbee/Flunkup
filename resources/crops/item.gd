@@ -1,5 +1,5 @@
 extends Resource
-class_name Crop
+class_name Item
 
 @export var name: String 
 

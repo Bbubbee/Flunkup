@@ -108,7 +108,7 @@ size = Vector2(19, 23)
 
 [node name="Helipod" type="CharacterBody2D"]
 z_index = 1
-collision_layer = 0
+collision_layer = 4
 script = ExtResource("1_7wsn7")
 
 [node name="PhysicsShape" type="CollisionShape2D" parent="."]
