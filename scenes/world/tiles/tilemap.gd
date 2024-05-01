@@ -18,7 +18,7 @@ const base_crop = preload("res://test/res_crop.tscn")
 @onready var crops = $Crops
 
 ## Plant a crop on top of this tile. 
-func _on_plant_on_tile(pos: Vector2):
+func _on_plant_on_tile(pos: Vector2, crop: Crop):
 	# Get tile positions. 
 	var tile_pos = local_to_map(pos)
 	var tile_above_pos = Vector2i(tile_pos.x, tile_pos.y-1)
@@ -27,9 +27,10 @@ func _on_plant_on_tile(pos: Vector2):
 	# See if can plant on tile. 
 	if retrieve_custom_data(tile_pos, "can_plant", ground_layer):
 		# Spawn crop!!!
-		var crop = base_crop.instantiate()
-		crop.position = new_pos
-		crops.add_child(crop)
+		var crop_scene = base_crop.instantiate()
+		crop_scene.position = new_pos
+		crops.add_child(crop_scene)
+		crop_scene.init(crop)
 			
 
 ## Till this tile. 

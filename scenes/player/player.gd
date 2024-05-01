@@ -32,7 +32,6 @@ func _ready():
 var held_item: Crop
 func _on_set_held_item(item: Crop):
 	held_item = item
-	print(held_item.name)
 	
 	
 func handle_movement(delta): 
@@ -57,8 +56,8 @@ func set_mode(active: bool):
 	
 var can_plant: bool = false
 func _input(event: InputEvent) -> void:
-	if event.is_action_pressed("left_click") and can_plant:
-		Events.plant_on_tile.emit(self.get_global_mouse_position())
+	if event.is_action_pressed("left_click") and can_plant and held_item:
+		Events.plant_on_tile.emit(self.get_global_mouse_position(), held_item)
 
 
 

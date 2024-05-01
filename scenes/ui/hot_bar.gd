@@ -2,9 +2,7 @@ extends PanelContainer
 
 @onready var item_container = $MarginContainer/ItemContainer
 
-func _ready():
-	# Select the first slot. 
-	item_container.get_child(0).select_slot(true)
+
 
 func init(inventory: Inventory):
 	var length = inventory.get_items().size()
@@ -19,6 +17,9 @@ func init(inventory: Inventory):
 		# or the maximum number of items are reached.
 		# The number of items shouldn't exceed the carry limit anyways. 
 		if i >= length or i >= 12: break
+		
+	# Select the first slot. 
+	item_container.get_child(0).select_slot(true)
 	
 
 

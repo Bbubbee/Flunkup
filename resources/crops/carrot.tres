@@ -1,11 +1,13 @@
-[gd_resource type="Resource" script_class="Crop" load_steps=3 format=3 uid="uid://jdwt4t3gukqb"]
+[gd_resource type="Resource" script_class="Crop" load_steps=4 format=3 uid="uid://jdwt4t3gukqb"]
 
-[ext_resource type="Texture2D" uid="uid://gst1o4ga1p5" path="res://assets/crops/carrot-Sheet.png" id="1_wb0dg"]
+[ext_resource type="Texture2D" uid="uid://bt63bghbovuw4" path="res://assets/crops/carrot-icon-Sheet.png" id="1_pybyk"]
+[ext_resource type="Texture2D" uid="uid://m5y78n2ifvmi" path="res://assets/crops/carrot-Sheet.png" id="1_wb0dg"]
 [ext_resource type="Script" path="res://resources/crops/crop.gd" id="1_whiey"]
 
 [resource]
 script = ExtResource("1_whiey")
 name = "carrot"
 atlas_coord = Rect2i(288, 32, 64, 16)
-days_until_adult = 0
-icon = ExtResource("1_wb0dg")
+days_until_adult = 20
+sprite_sheet = ExtResource("1_wb0dg")
+icon = ExtResource("1_pybyk")

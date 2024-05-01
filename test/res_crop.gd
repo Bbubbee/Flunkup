@@ -5,8 +5,12 @@ extends Sprite2D
 
 var age: int = 0
 
+func init(new_crop: Crop):
+	crop = new_crop
+	texture = new_crop.sprite_sheet
+	
+	
 func _ready():
-	texture.set_region(crop.atlas_coord)
 	
 	Events.increase_day.connect(_on_increase_day)
 
@@ -14,7 +18,7 @@ func _ready():
 func _on_increase_day():
 	age += 1
 	
-	if age > 5: 
+	if age > crop.days_until_adult/4: 
 		age = 0 
 		frame = min(frame + 1, 3)
 
