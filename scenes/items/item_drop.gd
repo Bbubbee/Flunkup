@@ -12,8 +12,8 @@ func init(new_item: Item):
 func _ready():
 	# Spinning animation. 
 	tween = get_tree().create_tween()
-	tween.tween_property(sprite, 'scale', Vector2(-1, 1), 2).set_ease(Tween.EASE_IN_OUT)
-	tween.tween_property(sprite, 'scale', Vector2(1, 1), 2).set_ease(Tween.EASE_IN_OUT)
+	tween.tween_property(sprite, 'scale', Vector2(-1, 1), 3).set_ease(Tween.EASE_IN)
+	tween.tween_property(sprite, 'scale', Vector2(1, 1), 3).set_ease(Tween.EASE_IN)
 	tween.set_loops()
 
 func spawn(): 

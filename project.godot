@@ -19,6 +19,7 @@ config/icon="res://assets/tiles/icon.svg"
 
 Globals="*res://utils/globals.gd"
 Events="*res://utils/events.gd"
+SceneTransition="*res://utils/scene_transition/scene_transition.tscn"
 
 [display]
 
