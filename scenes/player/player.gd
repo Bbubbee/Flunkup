@@ -23,25 +23,33 @@ func _ready():
 	# Connect signals.
 	Events.set_mode.connect(set_mode)
 	Events.set_held_item.connect(_on_set_held_item)
+	Events.picked_up_item.connect(_on_picked_up_item)
 	
 	# Inventory test. 
 	inventory.add_item(CARROT)
+	inventory.add_item(CARROT)
+	
 	inventory.add_item(WHEAT)
-	hot_bar.init(inventory)
+	inventory.add_item(WHEAT)
+	inventory.add_item(WHEAT)
+	
+	hot_bar.refresh_hotbar(inventory)
 	
 	state_machine.init(self)
 
+
+func _on_picked_up_item(item: Item):
+	inventory.add_item(item)
+	hot_bar.refresh_hotbar(inventory)
 
 var held_item: Item
 func _on_set_held_item(item: Item):
 	held_item = item
 	
-	
 func handle_movement(delta): 
 	var direction = Input.get_axis("left", "right")
 	if direction: velocity_component.move(delta, direction)
 	else: velocity_component.stop(delta)
-
 
 ## Flip the nodes to face wherever the player is moving. 
 func flip_nodes(): 

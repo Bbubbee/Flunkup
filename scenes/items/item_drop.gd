@@ -24,4 +24,5 @@ func spawn():
 
 func _on_player_detector_body_entered(_body):
 	tween.stop()
+	Events.picked_up_item.emit(item) 
 	queue_free()

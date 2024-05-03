@@ -1,4 +1,4 @@
-[gd_resource type="Resource" script_class="Crop" load_steps=4 format=3 uid="uid://jdwt4t3gukqb"]
+[gd_resource type="Resource" script_class="Item" load_steps=4 format=3 uid="uid://jdwt4t3gukqb"]
 
 [ext_resource type="Texture2D" uid="uid://bt63bghbovuw4" path="res://assets/crops/carrot-icon-Sheet.png" id="1_pybyk"]
 [ext_resource type="Texture2D" uid="uid://m5y78n2ifvmi" path="res://assets/crops/carrot-Sheet.png" id="1_wb0dg"]

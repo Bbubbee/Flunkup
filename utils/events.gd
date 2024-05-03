@@ -13,4 +13,6 @@ signal increase_day
 
 signal set_held_item(item: Item)
 
+signal picked_up_item(item: Item) 
+
  
