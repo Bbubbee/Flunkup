@@ -8,8 +8,10 @@ var current_item: InventoryItem
 
 func _ready():
 	selected_texture.visible = false
+	amount_label.hide()
 	
 func show_item(inv_item: InventoryItem): 
+	amount_label.show()
 	current_item = inv_item
 	item_icon.texture = inv_item.item.icon 
 	amount_label.text = str(inv_item.amount)

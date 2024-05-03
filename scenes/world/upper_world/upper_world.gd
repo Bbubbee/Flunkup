@@ -19,7 +19,19 @@ func _ready() -> void:
 			# Randomly spawn an island. 
 			var r = randi() % 100 			
 			if r > 95: spawn_island(Vector2i(new_x, new_y))
+	# End spawn floating islands. 
+	
+	var used_cells = tilemap.get_used_cells(0)
+	spawn_spikes(used_cells)
 
+
+func spawn_spikes(cells: Array[Vector2i]): 
+	for c in cells: 
+		# Check if can place spike. 
+		if not tilemap.get_cell_tile_data(0, Vector2i(c.x, c.y -1)):
+			var r = randi() % 100
+			if r > 90: 
+				tilemap.set_cell(0, Vector2i(c.x, c.y -1), 0, Vector2i(1, 5))
 
 var check_width: int = 25
 var check_height: int = 90

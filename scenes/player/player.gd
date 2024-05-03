@@ -28,7 +28,6 @@ func _ready():
 	# Inventory test. 
 	inventory.add_item(CARROT)
 	inventory.add_item(CARROT)
-	
 	inventory.add_item(WHEAT)
 	inventory.add_item(WHEAT)
 	inventory.add_item(WHEAT)
@@ -38,10 +37,12 @@ func _ready():
 	state_machine.init(self)
 
 
+# Picked up a new item. Add it to the inventory. 
 func _on_picked_up_item(item: Item):
 	inventory.add_item(item)
 	hot_bar.refresh_hotbar(inventory)
 
+# The item the player is currently holding. 
 var held_item: Item
 func _on_set_held_item(item: Item):
 	held_item = item
