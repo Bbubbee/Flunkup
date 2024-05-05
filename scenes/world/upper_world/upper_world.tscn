@@ -41,4 +41,5 @@ text = "1"
 script = ExtResource("5_yx5tn")
 
 [editable path="Player"]
+[editable path="Player/Components/Hurtbox"]
 [editable path="Player/StateMachine"]

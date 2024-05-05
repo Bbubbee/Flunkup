@@ -1,0 +1,13 @@
+[gd_scene load_steps=2 format=3 uid="uid://bmqdf4kabond7"]
+
+[ext_resource type="Script" path="res://utils/components/hurtbox.gd" id="1_l1uy0"]
+
+[node name="Hurtbox" type="Area2D"]
+collision_layer = 0
+collision_mask = 0
+script = ExtResource("1_l1uy0")
+
+[node name="Collider" type="CollisionShape2D" parent="."]
+debug_color = Color(0, 0.639216, 0.384314, 0.419608)
+
+[connection signal="area_entered" from="." to="." method="_on_hitbox_entered"]

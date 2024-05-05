@@ -10,6 +10,9 @@ var plant_atlas_coord : Vector2i = Vector2i(21, 2) # Vector2i(13, 7)
 
 var tileset_layer: int = 0
 
+# Used in upper world script. 
+@onready var hazards: Node2D = $Hazards
+
 func _ready():
 	Events.process_tile.connect(_on_process_tile)
 	Events.plant_on_tile.connect(_on_plant_on_tile)

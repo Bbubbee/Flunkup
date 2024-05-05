@@ -18,6 +18,8 @@ const CARROT = preload("res://resources/crops/carrot.tres")
 var inventory: Inventory = Inventory.new() 
 @onready var hot_bar = $UIRoot/HotBar
 
+@onready var concurrent_animator: AnimationPlayer = $General/ConcurrentAnimator
+@onready var state_machine_2: Node = $StateMachine2
 
 func _ready():
 	# Connect signals.
@@ -35,6 +37,7 @@ func _ready():
 	hot_bar.refresh_hotbar(inventory)
 	
 	state_machine.init(self)
+	state_machine_2.init(self)
 
 
 # Picked up a new item. Add it to the inventory. 
@@ -46,7 +49,7 @@ func _on_picked_up_item(item: Item):
 var held_item: Item
 func _on_set_held_item(item: Item):
 	held_item = item
-	
+
 func handle_movement(delta): 
 	var direction = Input.get_axis("left", "right")
 	if direction: velocity_component.move(delta, direction)
@@ -65,18 +68,15 @@ func is_touching_helipod():
 
 func set_mode(active: bool):
 	can_plant = active
-	
+
 var can_plant: bool = false
 func _input(event: InputEvent) -> void:
 	if event.is_action_pressed("left_click") and can_plant and held_item:
 		Events.plant_on_tile.emit(self.get_global_mouse_position(), held_item)
 
 
-
-
-
-
-
+func _on_hurtbox_im_hit() -> void:
+	state_machine_2.force_transition('hurt')
 
 
 
