@@ -17,6 +17,9 @@ func _ready() -> void:
 	noise = noise_texture.noise
 	
 	generate_world()
+	
+	var used_cells = tilemap.get_used_cells(0)
+	spawn_spikes(used_cells)
 
 func generate_world():
 	for x in range(world_width): 
@@ -26,7 +29,7 @@ func generate_world():
 			noise_val_arr.append(noise_val)
 			
 			if noise_val > 0.4: 
-				spawn_island(Vector2i(x, y))
+				spawn_island(Vector2i(x-world_width/2, y-world_height))
 				#tilemap.set_cell(0, Vector2i(x, y), 0, Vector2i(13, 7))
 				
 			#else: 
@@ -37,17 +40,23 @@ func generate_world():
 	
 
 const SPIKE = preload("res://scenes/world/hazards/spike.tscn")
+const COPPER_ORE = preload("res://scenes/world/ores/copper_ore.tscn")
 
 func spawn_spikes(cells: Array[Vector2i]): 
 	for c in cells: 
 		# Check if can place spike. 
 		if not tilemap.get_cell_tile_data(0, Vector2i(c.x, c.y -1)):
 			var r = randi() % 100
-			if r > 90: 
+			if r > 90 and r < 95: 
 				var spike_global_pos = tilemap.map_to_local(Vector2i(c.x, c.y-1))
 				var spike = SPIKE.instantiate()
 				spike.global_position = spike_global_pos
 				tilemap.hazards.add_child(spike) 
+			elif r > 95: 
+				var copper_global_pos = tilemap.map_to_local(Vector2i(c.x, c.y-1))
+				var copper = COPPER_ORE.instantiate()
+				copper.global_position = copper_global_pos
+				tilemap.hazards.add_child(copper) 
 
 	
 
