@@ -1,4 +1,5 @@
 extends TileMap
+class_name WorldTileMap
 
 # Tile map info. 
 var ground_layer: int = 0
@@ -44,6 +45,7 @@ func _on_process_tile(tile_pos: Vector2i):
 	elif retrieve_custom_data(tile_pos, "can_water", 0): 	
 		set_cell(ground_layer, tile_pos, 0, dirt_atlas_coord, 2)
 
+## Gets a tile within the tilemap. 
 ## @param: layer = the layer of the tilemap. Defaults to 0, the ground layer. 
 func get_valid_tile(pos: Vector2, custom_data_layer: String = "", layer: int = 0): 
 	var tile_pos: Vector2i = local_to_map(pos)
@@ -52,14 +54,28 @@ func get_valid_tile(pos: Vector2, custom_data_layer: String = "", layer: int = 0
 	# May have to revamp later. 
 	var tile_source = get_cell_source_id(layer, tile_pos) 
 	if tile_source < 0: 
-		return false
+		return null
 	
 	# If you want to check if a custom data layer is true or exists, you can. 
 	# Else, it will just return the tile pos. 
 	if custom_data_layer: 
 		if retrieve_custom_data(tile_pos, custom_data_layer, layer): return tile_pos
-		else: return false 
+		else: return null 
 	else: return tile_pos
+
+
+func get_tile(pos: Vector2):
+	return local_to_map(pos) 
+
+
+
+func _input(event: InputEvent) -> void:
+	if event.is_action_pressed('left_click'): 
+		pass
+		
+		# Original tile.
+		# Local position. 
+
 
 ## Checks if the selected tile contains the specified custom data.
 ## Returns true or false. 
@@ -71,8 +87,19 @@ func retrieve_custom_data(tile_pos: Vector2i, custom_data_layer: String, layer: 
 	if tile_data: return tile_data.get_custom_data(custom_data_layer)
 	else: return false
 
-func check_if_cell_is_occupied(): 
-	pass
 
+var custom_data_layers = [
+	'can_till',
+	'can_plant',
+	'can_water'
+]
 
+func get_custom_data_string(tile_pos: Vector2i, layer: int) -> String: 
+	var tile_data: TileData = get_cell_tile_data(layer, tile_pos)
+
+	for custom_data in custom_data_layers:
+		if tile_data.get_custom_data(custom_data): return custom_data
+		
+		
+	return '' 
 

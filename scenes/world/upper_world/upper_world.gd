@@ -1,4 +1,5 @@
 extends Node2D
+class_name World
 
 @onready var tilemap: TileMap = $TempTilemap
 
@@ -28,15 +29,13 @@ func generate_world():
 			var noise_val: float = noise.get_noise_2d(x, y)
 			noise_val_arr.append(noise_val)
 			
+			# Spawn island. 
 			if noise_val > 0.4: 
 				spawn_island(Vector2i(x-world_width/2, y-world_height))
-				#tilemap.set_cell(0, Vector2i(x, y), 0, Vector2i(13, 7))
-				
-			#else: 
-				#tilemap.set_cell(0, Vector2i(x, y), 0, Vector2i(3, 1))
-				
-	print(noise_val_arr.min())
-	print(noise_val_arr.max())
+			
+	# Use this to check range of noise. 
+	#print(noise_val_arr.min())
+	#print(noise_val_arr.max())
 	
 
 const SPIKE = preload("res://scenes/world/hazards/spike.tscn")
@@ -58,14 +57,13 @@ func spawn_spikes(cells: Array[Vector2i]):
 				copper.global_position = copper_global_pos
 				tilemap.hazards.add_child(copper) 
 
-	
 
 func spawn_island(start_pos: Vector2i):
 	# Get random island pattern. 
 	var r = randi() % tilemap.tile_set.get_patterns_count()
 	var pattern: TileMapPattern = tilemap.tile_set.get_pattern(r)
 	
-	# See if this island pattern overlaps with any tiles. 
+	# Dont spawn island if it overlaps with any tiles. 
 	for x in pattern.get_size().x+8: 
 		for y in pattern.get_size().y+8: 
 			if tilemap.get_cell_tile_data(0, Vector2i(start_pos.x + x-4, start_pos.y + y-4)): return
@@ -78,5 +76,5 @@ func _input(event: InputEvent) -> void:
 	if event.is_action_pressed('left_click'): 
 		var mouse_pos = get_global_mouse_position()
 		var tile = tilemap.local_to_map(mouse_pos)
-		print(tile) 
+
 	

@@ -7,6 +7,7 @@
 [node name="ProgressBar" type="TextureProgressBar"]
 offset_right = 47.0
 offset_bottom = 7.0
+mouse_filter = 2
 value = 50.0
 nine_patch_stretch = true
 stretch_margin_left = 3

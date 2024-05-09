@@ -8,3 +8,6 @@ func get_direction_to_target(subject: Vector2, target: Vector2):
 	return (target - subject).normalized()
 
 
+
+
+

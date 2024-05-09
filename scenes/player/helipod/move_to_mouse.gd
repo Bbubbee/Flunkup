@@ -32,6 +32,7 @@ func on_input(event: InputEvent):
 		target = actor.get_global_mouse_position()
 		direction = Globals.get_direction_to_target(actor.center_marker.global_position, actor.get_global_mouse_position())
 
+	# Go to clicked tile. 
 	if event.is_action_pressed('left_click'): 
 		if actor.tile_map: 
 			var tile_map: TileMap = actor.tile_map
@@ -43,7 +44,8 @@ func on_input(event: InputEvent):
 			# Get two tiles above the selected tile. Get it's local position too. 
 			var local_pos = tile_map.map_to_local(Vector2i(tile_pos.x, tile_pos.y-2))
 			transition.emit(self, 'movetotile', {"target": local_pos, "original_tile": tile_pos})
-		
+	
+	# Go to follow mode. 
 	if event.is_action_pressed("change_heli_mode"):
 		transition.emit(self, 'follow') 
 		Events.set_mode.emit(true)

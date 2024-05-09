@@ -1,4 +1,4 @@
-[gd_scene load_steps=11 format=3 uid="uid://dp2qhxu6v58ec"]
+[gd_scene load_steps=12 format=3 uid="uid://dp2qhxu6v58ec"]
 
 [ext_resource type="Script" path="res://scenes/world/upper_world/upper_world.gd" id="1_1mpwi"]
 [ext_resource type="PackedScene" uid="uid://c6ujb8e5n6kvp" path="res://scenes/world/tiles/temp_tilemap.tscn" id="2_bi4ls"]
@@ -7,13 +7,14 @@
 [ext_resource type="PackedScene" uid="uid://dtg7dr1jl4ced" path="res://utils/components/velocity_component.tscn" id="4_opbwr"]
 [ext_resource type="Script" path="res://utils/components/players_velocity_component.gd" id="5_oh1aq"]
 [ext_resource type="Script" path="res://scenes/main/day_tracker_label.gd" id="5_yx5tn"]
+[ext_resource type="PackedScene" uid="uid://t84dc3iv5p16" path="res://scenes/player/camear/player_camera.tscn" id="8_p1m02"]
 
 [sub_resource type="Gradient" id="Gradient_p47ib"]
 offsets = PackedFloat32Array(0.0194805, 0.957792)
 colors = PackedColorArray(0, 0, 1, 1, 0.177193, 0.737603, 0.228089, 1)
 
 [sub_resource type="FastNoiseLite" id="FastNoiseLite_uigu7"]
-frequency = 0.1
+frequency = 0.2
 
 [sub_resource type="NoiseTexture2D" id="NoiseTexture2D_v1v72"]
 color_ramp = SubResource("Gradient_p47ib")
@@ -26,9 +27,17 @@ noise_texture = SubResource("NoiseTexture2D_v1v72")
 [node name="TempTilemap" parent="." instance=ExtResource("2_bi4ls")]
 layer_0/tile_data = PackedInt32Array(393217, 524288, 4, 327681, 524288, 1, 393216, 589824, 4, 327680, 524288, 1, 458751, 524288, 4, 393215, 589824, 1, 458750, 589824, 4, 393214, 589824, 1, 458749, 524288, 4, 393213, 589824, 1, 458748, 589824, 4, 393212, 524288, 1, 458747, 589824, 4, 393211, 589824, 1, 458746, 589824, 4, 393210, 524288, 1, 458745, 524288, 4, 393209, 524288, 1, 458744, 524288, 4, 393208, 524288, 1, 458743, 589824, 4, 393207, 589824, 1, 458742, 524288, 4, 393206, 589824, 1, 458741, 524288, 4, 393205, 589824, 1, 458740, 589824, 4, 393204, 589824, 1, 458739, 524288, 4, 393203, 524288, 1, 458738, 458752, 4, 393202, 458752, 1)
 
+[node name="Helipod" parent="." node_paths=PackedStringArray("tile_map", "player") instance=ExtResource("4_2i22s")]
+position = Vector2(-108, 39)
+tile_map = NodePath("../TempTilemap")
+player = NodePath("../Player")
+
 [node name="Player" parent="." node_paths=PackedStringArray("helipod") instance=ExtResource("3_844yg")]
 position = Vector2(-133, 58)
 helipod = NodePath("../Helipod")
+
+[node name="CameraRemote" parent="Player/General" index="4"]
+remote_path = NodePath("../../../PlayerCamera")
 
 [node name="VelocityComponent2" parent="Player/Components" index="1" node_paths=PackedStringArray("actor") instance=ExtResource("4_opbwr")]
 script = ExtResource("5_oh1aq")
@@ -39,10 +48,9 @@ flight_acceleration = 400.0
 actor = NodePath("../..")
 friction = 600.0
 
-[node name="Helipod" parent="." node_paths=PackedStringArray("tile_map", "player") instance=ExtResource("4_2i22s")]
-position = Vector2(-108, 39)
-tile_map = NodePath("../TempTilemap")
-player = NodePath("../Player")
+[node name="PlayerCamera" parent="." node_paths=PackedStringArray("world") instance=ExtResource("8_p1m02")]
+position = Vector2(-133, 58)
+world = NodePath("..")
 
 [node name="UIRoot" type="CanvasLayer" parent="."]
 

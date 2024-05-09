@@ -1,10 +1,11 @@
-[gd_scene load_steps=7 format=3 uid="uid://b4gosjrsk1h2q"]
+[gd_scene load_steps=8 format=3 uid="uid://b4gosjrsk1h2q"]
 
 [ext_resource type="PackedScene" uid="uid://b6sepyerpol16" path="res://scenes/player/player.tscn" id="1_q2eh0"]
 [ext_resource type="Script" path="res://scenes/world/world.gd" id="1_v4yy0"]
 [ext_resource type="PackedScene" uid="uid://dkwhb1psqv167" path="res://scenes/player/helipod/helipod.tscn" id="2_hwaqm"]
 [ext_resource type="PackedScene" uid="uid://c6ujb8e5n6kvp" path="res://scenes/world/tiles/temp_tilemap.tscn" id="3_h6qus"]
 [ext_resource type="Script" path="res://scenes/main/day_tracker_label.gd" id="5_u2i4a"]
+[ext_resource type="PackedScene" uid="uid://t84dc3iv5p16" path="res://scenes/player/camear/player_camera.tscn" id="6_e0ufp"]
 
 [sub_resource type="SegmentShape2D" id="SegmentShape2D_v35l8"]
 a = Vector2(2547, 6)
@@ -21,6 +22,9 @@ color = Color(0.207843, 0.282353, 0.431373, 1)
 
 [node name="Player" parent="." node_paths=PackedStringArray("helipod") instance=ExtResource("1_q2eh0")]
 helipod = NodePath("../HeliPod")
+
+[node name="CameraRemote" parent="Player/General" index="4"]
+remote_path = NodePath("../../../PlayerCamera")
 
 [node name="HeliPod" parent="." node_paths=PackedStringArray("tile_map", "player") instance=ExtResource("2_hwaqm")]
 tile_map = NodePath("../TempTilemap")
@@ -46,4 +50,10 @@ position = Vector2(-1127, -446)
 shape = SubResource("SegmentShape2D_v35l8")
 debug_color = Color(0.992157, 0, 0.262745, 0.419608)
 
+[node name="PlayerCamera" parent="." instance=ExtResource("6_e0ufp")]
+
 [connection signal="body_entered" from="TransitionArea" to="." method="_on_transition_area_body_entered"]
+
+[editable path="Player"]
+[editable path="Player/Components/Hurtbox"]
+[editable path="Player/StateMachine"]
