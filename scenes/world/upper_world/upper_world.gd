@@ -12,15 +12,28 @@ var do_once: bool = true
 var noise: Noise
 var noise_val_arr = []
 	
-	
+@onready var top_area: Area2D = $TopArea
+
 func _ready() -> void:
 	# Get the noise that we set in the editor. 
 	noise = noise_texture.noise
 	
 	generate_world()
+	spawn_spikes()
+	setup_boundaries()
 	
-	var used_cells = tilemap.get_used_cells(0)
-	spawn_spikes(used_cells)
+	top_area.init(boundaries)
+
+var boundaries = {}
+func setup_boundaries(): 
+	var world_offset = 5*16
+	var island_offset = 23*16 
+	
+	boundaries['left'] = 0 - (world_width*16)/2 - world_offset
+	boundaries['right'] = 0 + (world_width*16)/2 + world_offset + island_offset
+	boundaries['top'] = 0 - world_height*16 - world_offset
+	
+	
 
 func generate_world():
 	for x in range(world_width): 
@@ -30,8 +43,7 @@ func generate_world():
 			noise_val_arr.append(noise_val)
 			
 			# Spawn island. 
-			if noise_val > 0.4: 
-				spawn_island(Vector2i(x-world_width/2, y-world_height))
+			if noise_val > 0.4: spawn_island(Vector2i(x-world_width/2, y-world_height))
 			
 	# Use this to check range of noise. 
 	#print(noise_val_arr.min())
@@ -41,17 +53,21 @@ func generate_world():
 const SPIKE = preload("res://scenes/world/hazards/spike.tscn")
 const COPPER_ORE = preload("res://scenes/world/ores/copper_ore.tscn")
 
-func spawn_spikes(cells: Array[Vector2i]): 
+func spawn_spikes(): 
+	var cells = tilemap.get_used_cells(0)
+	
 	for c in cells: 
 		# Check if can place spike. 
 		if not tilemap.get_cell_tile_data(0, Vector2i(c.x, c.y -1)):
 			var r = randi() % 100
 			if r > 90 and r < 95: 
+				# Place spike. 
 				var spike_global_pos = tilemap.map_to_local(Vector2i(c.x, c.y-1))
 				var spike = SPIKE.instantiate()
 				spike.global_position = spike_global_pos
 				tilemap.hazards.add_child(spike) 
 			elif r > 95: 
+				# Place copper. 
 				var copper_global_pos = tilemap.map_to_local(Vector2i(c.x, c.y-1))
 				var copper = COPPER_ORE.instantiate()
 				copper.global_position = copper_global_pos
@@ -71,10 +87,9 @@ func spawn_island(start_pos: Vector2i):
 	tilemap.set_pattern(0, start_pos, pattern)
 
 	
-	
 func _input(event: InputEvent) -> void:
 	if event.is_action_pressed('left_click'): 
 		var mouse_pos = get_global_mouse_position()
-		var tile = tilemap.local_to_map(mouse_pos)
+		var _tile = tilemap.local_to_map(mouse_pos)
 
 	
