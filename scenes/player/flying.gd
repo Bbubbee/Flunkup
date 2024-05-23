@@ -20,7 +20,7 @@ func physics_process(delta):
 	actor.move_and_slide()
 	actor.flip_nodes()
 	
-	# Keep the helipod on the player. 
+	## Keep the helipod on the player. 
 	actor.helipod.global_position = Vector2(actor.global_position.x, actor.global_position.y-30)
 	
 	# Fly up or down. 

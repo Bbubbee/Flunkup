@@ -6,8 +6,7 @@ var is_mouse_over: bool = false
 
 func _input(event: InputEvent) -> void:
 	if event.is_action_pressed("left_click") and is_mouse_over: 
-		print('go here')
-		Events.position_helipod.emit(self.global_position, self) 
+		Events.position_helipod.emit(self.global_position) 
 	
 	
 func mine(): 

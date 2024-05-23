@@ -118,7 +118,7 @@ metadata/_edit_lock_ = true
 [node name="VelocityComponent" parent="Components" node_paths=PackedStringArray("actor") instance=ExtResource("3_wmg33")]
 script = ExtResource("4_hq8ke")
 flight_gravity = 200.0
-fly_up_speed = 500.0
+fly_up_speed = 80.0
 fly_down_speed = 200.0
 flight_acceleration = 400.0
 actor = NodePath("../..")

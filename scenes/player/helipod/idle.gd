@@ -1,7 +1,7 @@
 extends State
 
-func _ready() -> void:
-	Events.position_helipod.connect(position_helipod)
+#func _ready() -> void:
+	#Events.position_helipod.connect(position_helipod)
 
 func physics_process(delta: float) -> void:
 	actor.velocity_component.stop_freely(delta)
@@ -20,7 +20,8 @@ func on_input(event: InputEvent):
 	
 	# Go to the clicked tile. 
 	if event.is_action_pressed('left_click'): 
-		position_helipod()
+		pass
+		#position_helipod()
 	
 
 func position_helipod(pos: Vector2 = Vector2.ZERO, entity = null): 

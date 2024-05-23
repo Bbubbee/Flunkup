@@ -1,4 +1,5 @@
 extends Node
+class_name StateMachine
 
 var states: Dictionary = {}
 var current_state: State 

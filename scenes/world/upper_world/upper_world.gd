@@ -1,10 +1,11 @@
-extends Node2D
-class_name World
+extends Level
 
 @onready var tilemap: TileMap = $TempTilemap
 
 var world_width: int = 60
 var world_height: int = 90
+@onready var player_camera: Camera2D = $PlayerCamera
+@onready var player: Player = $Player
 
 var do_once: bool = true 
 
@@ -23,6 +24,9 @@ func _ready() -> void:
 	setup_boundaries()
 	
 	top_area.init(boundaries)
+	player_camera.init(boundaries) 
+	player.init('flying', Vector2(0, 0+125))
+	
 
 var boundaries = {}
 func setup_boundaries(): 
@@ -45,7 +49,7 @@ func generate_world():
 			# Spawn island. 
 			if noise_val > 0.4: spawn_island(Vector2i(x-world_width/2, y-world_height))
 			
-	# Use this to check range of noise. 
+	## Use this to check range of noise. 
 	#print(noise_val_arr.min())
 	#print(noise_val_arr.max())
 	
@@ -84,6 +88,7 @@ func spawn_island(start_pos: Vector2i):
 		for y in pattern.get_size().y+8: 
 			if tilemap.get_cell_tile_data(0, Vector2i(start_pos.x + x-4, start_pos.y + y-4)): return
 	
+	# Spawn the island. 
 	tilemap.set_pattern(0, start_pos, pattern)
 
 	
@@ -93,3 +98,7 @@ func _input(event: InputEvent) -> void:
 		var _tile = tilemap.local_to_map(mouse_pos)
 
 	
+
+
+func _on_top_area_body_entered(_body: Node2D) -> void:
+	change_level.emit("res://scenes/world/upper_world/upper_world.tscn")

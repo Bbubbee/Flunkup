@@ -12,8 +12,12 @@ var entity
 
 func enter(enter_params = null):
 	tile_to_act_on = enter_params['tile']
-	entity = enter_params['entity']
 	actor.animator_2.play('shake')		
+	
+	if enter_params['entity']: 
+		entity = enter_params['entity']
+	else: 
+		entity = null 
 	
 	print(tile_to_act_on)	
 

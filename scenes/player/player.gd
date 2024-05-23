@@ -7,7 +7,7 @@ class_name Player
 # Components.
 @onready var velocity_component: PlayerVelocityComponent = $Components/VelocityComponent
 @onready var jump_component: JumpComponent = $Components/JumpComponent
-@onready var state_machine = $StateMachine
+@onready var state_machine: PlayerStateMachine = $StateMachine
 
 # Test crops for inventory. 
 const WHEAT = preload("res://resources/crops/wheat.tres")
@@ -19,7 +19,13 @@ var inventory: Inventory = Inventory.new()
 @onready var hot_bar = $UIRoot/HotBar
 
 @onready var concurrent_animator: AnimationPlayer = $General/ConcurrentAnimator
-@onready var state_machine_2: Node = $StateMachine2
+@onready var state_machine_2: PlayerStateMachine = $StateMachine2
+
+func init(state: String = '', pos: Vector2 = Vector2.ZERO):
+	
+	if state: state_machine.force_transition(state) 
+	if pos: global_position = pos
+	#global_position 
 
 func _ready():
 	# Connect signals.
@@ -38,6 +44,8 @@ func _ready():
 	
 	state_machine.init(self)
 	state_machine_2.init(self)
+	
+	init()
 
 
 # Picked up a new item. Add it to the inventory. 

@@ -19,9 +19,9 @@ func move(delta: float, direction: float):
 
 # Move in the x and y direction .
 func move_freely(delta: float, direction: Vector2):
+	direction = direction.normalized()
 	actor.velocity.x = move_toward(actor.velocity.x, speed*direction.x, acceleration*delta) 
 	actor.velocity.y = move_toward(actor.velocity.y, speed*direction.y, acceleration*delta) 
-
 
 func stop_freely(delta: float):
 	actor.velocity.x = move_toward(actor.velocity.x, 0, friction*delta)
