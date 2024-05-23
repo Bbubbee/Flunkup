@@ -1,4 +1,4 @@
-[gd_scene load_steps=14 format=3 uid="uid://dp2qhxu6v58ec"]
+[gd_scene load_steps=15 format=3 uid="uid://dp2qhxu6v58ec"]
 
 [ext_resource type="Script" path="res://scenes/world/upper_world/upper_world.gd" id="1_1mpwi"]
 [ext_resource type="PackedScene" uid="uid://c6ujb8e5n6kvp" path="res://scenes/world/tiles/temp_tilemap.tscn" id="2_bi4ls"]
@@ -8,7 +8,7 @@
 [ext_resource type="Script" path="res://utils/components/players_velocity_component.gd" id="5_oh1aq"]
 [ext_resource type="Script" path="res://scenes/main/day_tracker_label.gd" id="5_yx5tn"]
 [ext_resource type="PackedScene" uid="uid://t84dc3iv5p16" path="res://scenes/player/camear/player_camera.tscn" id="8_p1m02"]
-[ext_resource type="Script" path="res://scenes/world/upper_world/player_detector.gd" id="9_n21m1"]
+[ext_resource type="Script" path="res://scenes/world/upper_world/player_detector_top.gd" id="9_n21m1"]
 
 [sub_resource type="Gradient" id="Gradient_p47ib"]
 offsets = PackedFloat32Array(0.0194805, 0.957792)
@@ -21,7 +21,9 @@ frequency = 0.2
 color_ramp = SubResource("Gradient_p47ib")
 noise = SubResource("FastNoiseLite_uigu7")
 
-[sub_resource type="SegmentShape2D" id="SegmentShape2D_e6nnq"]
+[sub_resource type="SegmentShape2D" id="SegmentShape2D_i22yf"]
+
+[sub_resource type="SegmentShape2D" id="SegmentShape2D_6fskt"]
 
 [node name="UpperWorld" type="Node2D"]
 script = ExtResource("1_1mpwi")
@@ -61,16 +63,24 @@ offset_bottom = 23.0
 text = "1"
 script = ExtResource("5_yx5tn")
 
-[node name="TopArea" type="Area2D" parent="."]
+[node name="PlayerDetectorBot" type="Area2D" parent="."]
 collision_layer = 0
 collision_mask = 2
 script = ExtResource("9_n21m1")
 
-[node name="Shape" type="CollisionShape2D" parent="TopArea"]
-shape = SubResource("SegmentShape2D_e6nnq")
+[node name="Shape" type="CollisionShape2D" parent="PlayerDetectorBot"]
+shape = SubResource("SegmentShape2D_i22yf")
 
-[connection signal="body_entered" from="TopArea" to="." method="_on_top_area_body_entered"]
-[connection signal="body_entered" from="TopArea" to="TopArea" method="_on_body_entered"]
+[node name="PlayerDetectorTop" type="Area2D" parent="."]
+collision_layer = 0
+collision_mask = 2
+script = ExtResource("9_n21m1")
+
+[node name="Shape" type="CollisionShape2D" parent="PlayerDetectorTop"]
+shape = SubResource("SegmentShape2D_6fskt")
+
+[connection signal="body_entered" from="PlayerDetectorBot" to="." method="_on_player_detector_bot_body_entered"]
+[connection signal="body_entered" from="PlayerDetectorTop" to="." method="_on_player_detector_top_body_entered"]
 
 [editable path="Player"]
 [editable path="Player/Components/Hurtbox"]

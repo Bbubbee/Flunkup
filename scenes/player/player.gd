@@ -22,7 +22,6 @@ var inventory: Inventory = Inventory.new()
 @onready var state_machine_2: PlayerStateMachine = $StateMachine2
 
 func init(state: String = '', pos: Vector2 = Vector2.ZERO):
-	
 	if state: state_machine.force_transition(state) 
 	if pos: global_position = pos
 	#global_position 
@@ -44,8 +43,6 @@ func _ready():
 	
 	state_machine.init(self)
 	state_machine_2.init(self)
-	
-	init()
 
 
 # Picked up a new item. Add it to the inventory. 

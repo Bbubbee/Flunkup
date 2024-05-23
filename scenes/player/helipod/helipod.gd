@@ -14,8 +14,8 @@ extends CharacterBody2D
 
 
 # Can be initialised carrying the player. 
-func init():
-	state_machine.force_transition('carrying')
+func init(inital_state: String):
+	state_machine.force_transition(inital_state)
 
 
 func _ready() -> void:
@@ -25,7 +25,6 @@ func _ready() -> void:
 	Events.position_helipod.connect(_on_position_helipod)
 	Events.player_touched_heli.connect(_on_player_touched_heli)
 	
-	init()
 
 func _on_player_touched_heli(held: bool):
 	if held: state_machine.force_transition('carrying')

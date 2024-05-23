@@ -6,6 +6,7 @@ var world_width: int = 60
 var world_height: int = 90
 @onready var player_camera: Camera2D = $PlayerCamera
 @onready var player: Player = $Player
+@onready var helipod: CharacterBody2D = $Helipod
 
 var do_once: bool = true 
 
@@ -13,7 +14,15 @@ var do_once: bool = true
 var noise: Noise
 var noise_val_arr = []
 	
-@onready var top_area: Area2D = $TopArea
+@onready var player_detector_top: Area2D = $PlayerDetectorTop
+@onready var player_detector_bot: Area2D = $PlayerDetectorBot
+
+func init(enter_params: EnterParams = null):
+	if enter_params: 
+		player.init(enter_params.player_state, enter_params.player_pos)
+		if enter_params.player_state == 'flying': 
+			helipod.init('carrying')
+			
 
 func _ready() -> void:
 	# Get the noise that we set in the editor. 
@@ -23,9 +32,10 @@ func _ready() -> void:
 	spawn_spikes()
 	setup_boundaries()
 	
-	top_area.init(boundaries)
+	player_detector_top.init(boundaries, Vector2i.UP)
+	player_detector_bot.init(boundaries, Vector2i.DOWN)
+	
 	player_camera.init(boundaries) 
-	player.init('flying', Vector2(0, 0+125))
 	
 
 var boundaries = {}
@@ -36,6 +46,8 @@ func setup_boundaries():
 	boundaries['left'] = 0 - (world_width*16)/2 - world_offset
 	boundaries['right'] = 0 + (world_width*16)/2 + world_offset + island_offset
 	boundaries['top'] = 0 - world_height*16 - world_offset
+	boundaries['bot'] = 0 + world_offset
+	
 	
 	
 
@@ -97,8 +109,18 @@ func _input(event: InputEvent) -> void:
 		var mouse_pos = get_global_mouse_position()
 		var _tile = tilemap.local_to_map(mouse_pos)
 
+
+func _on_player_detector_bot_body_entered(_body: Node2D) -> void:
+	var enter_params = EnterParams.new() 
+	enter_params.player_pos = Vector2(player.global_position.x, 0-400)
+	enter_params.player_state = "flying"
 	
+	change_level.emit("res://scenes/world/world.tscn", enter_params)
 
 
-func _on_top_area_body_entered(_body: Node2D) -> void:
-	change_level.emit("res://scenes/world/upper_world/upper_world.tscn")
+func _on_player_detector_top_body_entered(_body: Node2D) -> void:
+	var enter_params = EnterParams.new() 
+	enter_params.player_pos = Vector2(player.global_position.x, 0+125)
+	enter_params.player_state = "flying"
+	
+	change_level.emit("res://scenes/world/upper_world/upper_world.tscn", enter_params)
