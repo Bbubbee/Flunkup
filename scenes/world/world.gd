@@ -1,4 +1,5 @@
 extends Level
+class_name BottomLevel
 
 @onready var player: Player = $Player
 @onready var helipod: CharacterBody2D = $Helipod
@@ -15,5 +16,5 @@ func _on_transition_area_body_entered(_body):
 	var enter_params = EnterParams.new() 
 	enter_params.player_pos = Vector2(player.global_position.x, 0)
 	enter_params.player_state = 'flying'
-	change_level.emit("res://scenes/world/upper_world/upper_world.tscn", enter_params)
+	go_up_level.emit(enter_params)
 

@@ -1,4 +1,5 @@
 extends Level
+class_name WildLevels
 
 @onready var tilemap: TileMap = $TempTilemap
 
@@ -115,7 +116,7 @@ func _on_player_detector_bot_body_entered(_body: Node2D) -> void:
 	enter_params.player_pos = Vector2(player.global_position.x, 0-400)
 	enter_params.player_state = "flying"
 	
-	change_level.emit("res://scenes/world/world.tscn", enter_params)
+	go_down_level.emit(enter_params)
 
 
 func _on_player_detector_top_body_entered(_body: Node2D) -> void:
@@ -123,4 +124,4 @@ func _on_player_detector_top_body_entered(_body: Node2D) -> void:
 	enter_params.player_pos = Vector2(player.global_position.x, 0+125)
 	enter_params.player_state = "flying"
 	
-	change_level.emit("res://scenes/world/upper_world/upper_world.tscn", enter_params)
+	go_up_level.emit(enter_params)

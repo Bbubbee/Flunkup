@@ -8,7 +8,6 @@ class_name LevelManager
 var current_level: Level
 
 ## Level stack. 
-var level_stack: Array[Level]
 
 func _ready() -> void:
 	init_level("res://scenes/world/world.tscn")
@@ -23,6 +22,7 @@ func init_level(level_path: String):
 func unload_level(): 
 	if is_instance_valid(current_level): 
 		current_level.queue_free()
+		current_level.change_level.disconnect(change_level)
 	current_level = null
 
 func change_level(level_path: String, enter_params: EnterParams = null): 
