@@ -5,7 +5,7 @@ class_name LevelManager
 @onready var animator: AnimationPlayer = $LevelTransition/Animator
 
 @onready var main_level: Node2D = $MainLevel  # Holds the current_level node.
-var current_level: Level
+var current_level: Node2D
 
 ## Level stack. 
 

@@ -14,7 +14,7 @@ func init(enter_params: EnterParams = null):
 
 func _on_transition_area_body_entered(_body):
 	var enter_params = EnterParams.new() 
-	enter_params.player_pos = Vector2(player.global_position.x, 0)
+	enter_params.player_pos = Vector2(player.global_position.x, 0-100)
 	enter_params.player_state = 'flying'
 	go_up_level.emit(enter_params)
 

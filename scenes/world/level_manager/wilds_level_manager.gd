@@ -35,7 +35,6 @@ func go_up_level(enter_params: EnterParams = null):
 	animator.play("dissolve")
 	await animator.animation_finished
 	
-	
 	# Try and go up a level. 
 	level_index += 1 
 	if level_index < level_stack.size(): 
@@ -47,8 +46,7 @@ func go_up_level(enter_params: EnterParams = null):
 		unload_level()
 		current_level = WILD_LEVEL.instantiate()
 		
-	
-	
+
 	
 	# Connect signals for current level.
 	current_level.connect('go_up_level', go_up_level)
