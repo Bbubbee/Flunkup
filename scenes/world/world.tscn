@@ -13,13 +13,6 @@ a = Vector2(2547, 6)
 [node name="World" type="Node2D"]
 script = ExtResource("1_v4yy0")
 
-[node name="ColorRect" type="ColorRect" parent="."]
-offset_left = -1129.0
-offset_top = -615.0
-offset_right = 1426.0
-offset_bottom = 385.0
-color = Color(0.207843, 0.282353, 0.431373, 1)
-
 [node name="Helipod" parent="." node_paths=PackedStringArray("tile_map", "player") instance=ExtResource("2_hwaqm")]
 position = Vector2(195, -323)
 tile_map = NodePath("../TempTilemap")

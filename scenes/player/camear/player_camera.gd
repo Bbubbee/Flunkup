@@ -6,6 +6,8 @@ func init(boundaries: Dictionary):
 	limit_left = boundaries.left
 	limit_right = boundaries.right
 	limit_top = boundaries.top
+	limit_bottom = boundaries.bot
+	
 #
 #func _ready() -> void:
 	## Set the limits of the camera. 

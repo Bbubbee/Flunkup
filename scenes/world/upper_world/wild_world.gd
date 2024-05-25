@@ -111,17 +111,16 @@ func _input(event: InputEvent) -> void:
 		var _tile = tilemap.local_to_map(mouse_pos)
 
 
-func _on_player_detector_bot_body_entered(_body: Node2D) -> void:
-	var enter_params = EnterParams.new() 
-	enter_params.player_pos = Vector2(player.global_position.x, 0-400)
-	enter_params.player_state = "flying"
-	
-	go_down_level.emit(enter_params)
-
-
 func _on_player_detector_top_body_entered(_body: Node2D) -> void:
 	var enter_params = EnterParams.new() 
-	enter_params.player_pos = Vector2(player.global_position.x, 0+125)
+	enter_params.player_pos = Vector2(player.global_position.x, boundaries['bot'])
 	enter_params.player_state = "flying"
 	
-	go_up_level.emit(enter_params)
+	change_wilds_level.emit(Vector2i.UP, enter_params)
+
+func _on_player_detector_bot_body_entered(_body: Node2D) -> void:
+	var enter_params = EnterParams.new() 
+	enter_params.player_pos = Vector2(player.global_position.x, boundaries['top']+50)
+	enter_params.player_state = "flying"
+	
+	change_wilds_level.emit(Vector2i.DOWN, enter_params)

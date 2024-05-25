@@ -7,8 +7,8 @@ func init(boundaries: Dictionary, location: Vector2i):
 		shape.shape.a = Vector2i(boundaries['left'], boundaries['top'])
 		shape.shape.b = Vector2i(boundaries['right'], boundaries['top'])
 	elif location == Vector2i.DOWN: 
-		shape.shape.a = Vector2i(boundaries['left'], boundaries['bot']+100)
-		shape.shape.b = Vector2i(boundaries['right'], boundaries['bot']+100)
+		shape.shape.a = Vector2i(boundaries['left'], boundaries['bot']+50)
+		shape.shape.b = Vector2i(boundaries['right'], boundaries['bot']+50)
 	else:
 		print("ERROR: Location of player detector not set.")
 	

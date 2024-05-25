@@ -1,14 +1,14 @@
 [gd_scene load_steps=15 format=3 uid="uid://dp2qhxu6v58ec"]
 
-[ext_resource type="Script" path="res://scenes/world/upper_world/upper_world.gd" id="1_1mpwi"]
-[ext_resource type="PackedScene" uid="uid://c6ujb8e5n6kvp" path="res://scenes/world/tiles/temp_tilemap.tscn" id="2_bi4ls"]
-[ext_resource type="PackedScene" uid="uid://b6sepyerpol16" path="res://scenes/player/player.tscn" id="3_844yg"]
-[ext_resource type="PackedScene" uid="uid://dkwhb1psqv167" path="res://scenes/player/helipod/helipod.tscn" id="4_2i22s"]
-[ext_resource type="PackedScene" uid="uid://dtg7dr1jl4ced" path="res://utils/components/velocity_component.tscn" id="4_opbwr"]
-[ext_resource type="Script" path="res://utils/components/players_velocity_component.gd" id="5_oh1aq"]
-[ext_resource type="Script" path="res://scenes/main/day_tracker_label.gd" id="5_yx5tn"]
-[ext_resource type="PackedScene" uid="uid://t84dc3iv5p16" path="res://scenes/player/camear/player_camera.tscn" id="8_p1m02"]
-[ext_resource type="Script" path="res://scenes/world/upper_world/player_detector_top.gd" id="9_n21m1"]
+[ext_resource type="Script" path="res://scenes/world/upper_world/wild_world.gd" id="1_uv3j1"]
+[ext_resource type="PackedScene" uid="uid://c6ujb8e5n6kvp" path="res://scenes/world/tiles/temp_tilemap.tscn" id="2_ljv1v"]
+[ext_resource type="PackedScene" uid="uid://dkwhb1psqv167" path="res://scenes/player/helipod/helipod.tscn" id="3_g8sxf"]
+[ext_resource type="PackedScene" uid="uid://b6sepyerpol16" path="res://scenes/player/player.tscn" id="4_00w2v"]
+[ext_resource type="PackedScene" uid="uid://dtg7dr1jl4ced" path="res://utils/components/velocity_component.tscn" id="5_sv2fb"]
+[ext_resource type="Script" path="res://utils/components/players_velocity_component.gd" id="6_x0urb"]
+[ext_resource type="PackedScene" uid="uid://t84dc3iv5p16" path="res://scenes/player/camear/player_camera.tscn" id="7_nvve0"]
+[ext_resource type="Script" path="res://scenes/main/day_tracker_label.gd" id="8_lxkg7"]
+[ext_resource type="Script" path="res://scenes/world/upper_world/player_detector_top.gd" id="9_5ylay"]
 
 [sub_resource type="Gradient" id="Gradient_p47ib"]
 offsets = PackedFloat32Array(0.0194805, 0.957792)
@@ -25,26 +25,26 @@ noise = SubResource("FastNoiseLite_uigu7")
 
 [sub_resource type="SegmentShape2D" id="SegmentShape2D_6fskt"]
 
-[node name="UpperWorld" type="Node2D"]
-script = ExtResource("1_1mpwi")
+[node name="WildWorld" type="Node2D"]
+script = ExtResource("1_uv3j1")
 noise_texture = SubResource("NoiseTexture2D_v1v72")
 
-[node name="TempTilemap" parent="." instance=ExtResource("2_bi4ls")]
+[node name="TempTilemap" parent="." instance=ExtResource("2_ljv1v")]
 
-[node name="Helipod" parent="." node_paths=PackedStringArray("tile_map", "player") instance=ExtResource("4_2i22s")]
+[node name="Helipod" parent="." node_paths=PackedStringArray("tile_map", "player") instance=ExtResource("3_g8sxf")]
 position = Vector2(-108, 39)
 tile_map = NodePath("../TempTilemap")
 player = NodePath("../Player")
 
-[node name="Player" parent="." node_paths=PackedStringArray("helipod") instance=ExtResource("3_844yg")]
+[node name="Player" parent="." node_paths=PackedStringArray("helipod") instance=ExtResource("4_00w2v")]
 position = Vector2(-133, 58)
 helipod = NodePath("../Helipod")
 
 [node name="CameraRemote" parent="Player/General" index="4"]
 remote_path = NodePath("../../../PlayerCamera")
 
-[node name="VelocityComponent2" parent="Player/Components" index="1" node_paths=PackedStringArray("actor") instance=ExtResource("4_opbwr")]
-script = ExtResource("5_oh1aq")
+[node name="VelocityComponent2" parent="Player/Components" index="1" node_paths=PackedStringArray("actor") instance=ExtResource("5_sv2fb")]
+script = ExtResource("6_x0urb")
 flight_gravity = 200.0
 fly_up_speed = 80.0
 fly_down_speed = 200.0
@@ -52,7 +52,7 @@ flight_acceleration = 400.0
 actor = NodePath("../..")
 friction = 600.0
 
-[node name="PlayerCamera" parent="." instance=ExtResource("8_p1m02")]
+[node name="PlayerCamera" parent="." instance=ExtResource("7_nvve0")]
 position = Vector2(-133, 58)
 
 [node name="UIRoot" type="CanvasLayer" parent="."]
@@ -61,12 +61,12 @@ position = Vector2(-133, 58)
 offset_right = 40.0
 offset_bottom = 23.0
 text = "1"
-script = ExtResource("5_yx5tn")
+script = ExtResource("8_lxkg7")
 
 [node name="PlayerDetectorBot" type="Area2D" parent="."]
 collision_layer = 0
 collision_mask = 2
-script = ExtResource("9_n21m1")
+script = ExtResource("9_5ylay")
 
 [node name="Shape" type="CollisionShape2D" parent="PlayerDetectorBot"]
 shape = SubResource("SegmentShape2D_i22yf")
@@ -74,7 +74,7 @@ shape = SubResource("SegmentShape2D_i22yf")
 [node name="PlayerDetectorTop" type="Area2D" parent="."]
 collision_layer = 0
 collision_mask = 2
-script = ExtResource("9_n21m1")
+script = ExtResource("9_5ylay")
 
 [node name="Shape" type="CollisionShape2D" parent="PlayerDetectorTop"]
 shape = SubResource("SegmentShape2D_6fskt")
