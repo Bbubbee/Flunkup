@@ -33,6 +33,8 @@ func _on_increase_day():
 
 const ITEM_DROP = preload("res://scenes/items/item_drop.tscn")
 
+
+## If the crop is harvestable, and the helipod has passed throught it, harvest it. 
 func _on_area_2d_body_entered(_body):
 	if not harvestable: return 
 	

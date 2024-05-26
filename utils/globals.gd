@@ -9,5 +9,9 @@ func get_direction_to_target(subject: Vector2, target: Vector2):
 
 
 
+var helipod_actions = {
+	'mine': 'mine this booty'
+}
+
 
 

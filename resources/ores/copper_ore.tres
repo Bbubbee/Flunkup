@@ -1,0 +1,8 @@
+[gd_resource type="Resource" script_class="Item" load_steps=2 format=3 uid="uid://woa13kgyy21k"]
+
+[ext_resource type="Script" path="res://resources/crops/item.gd" id="1_adx3u"]
+
+[resource]
+script = ExtResource("1_adx3u")
+name = ""
+days_until_adult = 0

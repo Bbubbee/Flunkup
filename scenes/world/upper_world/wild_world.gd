@@ -68,7 +68,7 @@ func generate_world():
 	
 
 const SPIKE = preload("res://scenes/world/hazards/spike.tscn")
-const COPPER_ORE = preload("res://scenes/world/ores/copper_ore.tscn")
+const COPPER_ORE = preload("res://scenes/world/ores/base_ore.tscn")
 
 func spawn_spikes(): 
 	var cells = tilemap.get_used_cells(0)

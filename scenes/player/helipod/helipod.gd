@@ -26,26 +26,25 @@ func _ready() -> void:
 	Events.player_touched_heli.connect(_on_player_touched_heli)
 	
 
+
+"""
+	STATE MACHINE OVERRIDES 
+	
+	These activates a certain state, regardless of the current state. 
+"""
+
+
+
+
 func _on_player_touched_heli(held: bool):
 	if held: state_machine.force_transition('carrying')
 	else: state_machine.force_transition('idle')
 
-func move_to_tile():
-	pass
 
+
+var entity
 
 # This technically passes a tile. Ergo, the tile doesn't have to be determined. 
-func _on_position_helipod(pos: Vector2):
-	var tile = tile_map.get_tile(pos) 
-	print(tile) 
-	
-	# Check if its a tile. 
-	
-#func _input(event: InputEvent) -> void:
-	#if event.is_action_pressed('left_click'): 
-		#pass
-		#
-		## Check what tile this is. 
-		## Go to matching state. 
-		#var tile = tile_map.get_tile(get_global_mouse_position())
-		##print(tile) 
+func _on_position_helipod(pos: Vector2, e):
+	entity = e
+	state_machine.force_transition('movetotile', pos)

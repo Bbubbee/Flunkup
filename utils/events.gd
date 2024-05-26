@@ -1,7 +1,7 @@
 extends Node
 
 
-signal position_helipod(pos: Vector2)
+signal position_helipod(pos: Vector2, entity)
 signal player_touched_heli(hold: bool)
 
 signal process_tile(tile_pos: Vector2)

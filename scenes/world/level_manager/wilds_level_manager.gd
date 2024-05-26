@@ -9,9 +9,13 @@ var world_path: String = 'res://scenes/world/world.tscn'
 var world_checkpoint_path: String = 'res://scenes/world/checkpoint_worlds/world_checkpoint.tscn'
 
 func _ready() -> void:
-	init_level(world_path)
+	init_level(world_checkpoint_path)
 
 func init_level(level_path: String):
+	# Configure the wilds level based on the starting level (world or checkpoint) 
+	if level_path == world_checkpoint_path: wilds_level = 5
+	else: wilds_level = 0 
+	
 	var level_resource := load(level_path)
 	if level_resource:
 		current_level = level_resource.instantiate() 
@@ -38,7 +42,7 @@ func change_wilds_level(dir: Vector2i = Vector2i.UP, enter_params: EnterParams =
 		change_level(world_path, enter_params)
 	
 	# Go to a checkpoint level. 
-	if wilds_level >= 6:
+	elif wilds_level >= 5:
 		change_level(world_checkpoint_path, enter_params)
 		
 	

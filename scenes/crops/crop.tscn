@@ -13,12 +13,12 @@ hframes = 4
 script = ExtResource("2_fqum8")
 crop = ExtResource("3_th4st")
 
-[node name="Area2D" type="Area2D" parent="."]
+[node name="HelipodDetector" type="Area2D" parent="."]
 collision_layer = 0
 collision_mask = 4
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="HelipodDetector"]
 position = Vector2(0, 3)
 shape = SubResource("RectangleShape2D_d7527")
 
-[connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]
+[connection signal="body_entered" from="HelipodDetector" to="." method="_on_area_2d_body_entered"]

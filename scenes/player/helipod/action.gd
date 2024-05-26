@@ -1,7 +1,5 @@
 extends State 
 
-var tile_to_act_on
-var entity
 
 """
 	About: 
@@ -10,27 +8,22 @@ var entity
 		E.g., grass = till, dirt = water. 
 """
 
-func enter(enter_params = null):
-	tile_to_act_on = enter_params['tile']
+func enter(_enter_params = null):
 	actor.animator_2.play('shake')		
-	
-	if enter_params['entity']: 
-		entity = enter_params['entity']
-	else: 
-		entity = null 
-	
-	print(tile_to_act_on)	
+
 
 func physics_process(delta: float) -> void:
 	actor.velocity_component.stop_freely(delta)
 	actor.move_and_slide()
 
 func _on_animator_2_animation_finished(anim_name):
-	if anim_name == 'shake': 
-		if entity: 
-			entity.mine()
-		else: 
-			Events.process_tile.emit(tile_to_act_on)			
+	if anim_name == 'shake': 	
+		
+		# If this is an ore, mine it.
+		if actor.entity: 
+			if actor.entity.has_method('act_upon'):
+				actor.entity.act_upon()
+			
 		transition.emit(self, 'idle')
 
 

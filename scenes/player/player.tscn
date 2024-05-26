@@ -153,6 +153,7 @@ layout_mode = 3
 anchors_preset = 0
 offset_right = 40.0
 offset_bottom = 40.0
+mouse_filter = 2
 
 [node name="HelipodStaminaBar" parent="UI" instance=ExtResource("3_ijswr")]
 visible = false

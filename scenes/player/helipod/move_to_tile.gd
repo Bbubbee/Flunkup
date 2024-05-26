@@ -3,9 +3,7 @@ extends State
 var distance: float 
 var direction: Vector2 
 var target: Vector2
-var original_tile: Vector2i 
 
-var entity
 
 
 """
@@ -15,12 +13,8 @@ var entity
 """
 
 func enter(enter_params = null):
-	target = enter_params['target']
-	original_tile = enter_params['original_tile'] 
-	if enter_params['entity']: 
-		entity = enter_params['entity']
-	else: 
-		entity = null 
+	target = enter_params
+	print('entering move to tile')
 
 func physics_process(delta: float) -> void:
 	# Move towards the mouse's last right clicked position. 
@@ -29,8 +23,9 @@ func physics_process(delta: float) -> void:
 	
 	# TODO: Change how far helipod stops from the target. 
 	# Stop when near target. 
-	if distance < 5: 
-		transition.emit(self, 'action', {'tile': original_tile, "entity": entity})
+	if distance < 10: 
+		transition.emit(self, 'action')
+		#transition.emit(self, 'action', {'tile': original_tile, "entity": entity})
 		
 	actor.velocity_component.move_freely(delta, direction)	
 	actor.move_and_slide()

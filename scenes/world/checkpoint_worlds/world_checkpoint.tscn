@@ -1,10 +1,11 @@
-[gd_scene load_steps=7 format=3 uid="uid://bdx1uwu023xr2"]
+[gd_scene load_steps=8 format=3 uid="uid://bdx1uwu023xr2"]
 
 [ext_resource type="Script" path="res://scenes/world/checkpoint_worlds/world_checkpoint.gd" id="1_fbryq"]
 [ext_resource type="PackedScene" uid="uid://c6ujb8e5n6kvp" path="res://scenes/world/tiles/temp_tilemap.tscn" id="1_xmp0x"]
 [ext_resource type="PackedScene" uid="uid://b6sepyerpol16" path="res://scenes/player/player.tscn" id="3_kaa6n"]
 [ext_resource type="PackedScene" uid="uid://dkwhb1psqv167" path="res://scenes/player/helipod/helipod.tscn" id="4_k37vb"]
 [ext_resource type="PackedScene" uid="uid://t84dc3iv5p16" path="res://scenes/player/camear/player_camera.tscn" id="5_breps"]
+[ext_resource type="PackedScene" uid="uid://dgi3cxx545v2o" path="res://scenes/world/ores/base_ore.tscn" id="6_qqtnl"]
 
 [sub_resource type="SegmentShape2D" id="SegmentShape2D_k1cos"]
 a = Vector2(-1500, 2.08165e-12)
@@ -32,12 +33,16 @@ player = NodePath("../Player")
 position = Vector2(162, -321)
 
 [node name="PlayerDetector" type="Area2D" parent="."]
+position = Vector2(0, 34)
 collision_layer = 0
 collision_mask = 2
 
 [node name="PlayerDetectorShape" type="CollisionShape2D" parent="PlayerDetector"]
 position = Vector2(-2, 76)
 shape = SubResource("SegmentShape2D_k1cos")
+
+[node name="CopperOre" parent="." instance=ExtResource("6_qqtnl")]
+position = Vector2(164, -248)
 
 [connection signal="body_entered" from="PlayerDetector" to="." method="_on_player_detector_body_entered"]
 
