@@ -9,6 +9,7 @@ var current_level: Node2D
 
 ## Level stack. 
 
+# NOTE: Commented these 2 functions because of changes in paramater types.
 func _ready() -> void:
 	init_level("res://scenes/world/world.tscn")
 

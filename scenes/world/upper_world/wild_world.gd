@@ -119,6 +119,7 @@ func _on_player_detector_top_body_entered(_body: Node2D) -> void:
 	change_wilds_level.emit(Vector2i.UP, enter_params)
 
 func _on_player_detector_bot_body_entered(_body: Node2D) -> void:
+	#print(boundaries['top']+50)  # -1470
 	var enter_params = EnterParams.new() 
 	enter_params.player_pos = Vector2(player.global_position.x, boundaries['top']+50)
 	enter_params.player_state = "flying"
