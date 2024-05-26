@@ -1,8 +1,15 @@
-[gd_scene load_steps=5 format=3 uid="uid://c826rgyfnray0"]
+[gd_scene load_steps=7 format=3 uid="uid://c826rgyfnray0"]
 
 [ext_resource type="Texture2D" uid="uid://m5y78n2ifvmi" path="res://assets/crops/carrot-Sheet.png" id="1_kp2ee"]
 [ext_resource type="Script" path="res://scenes/crops/crop.gd" id="2_fqum8"]
-[ext_resource type="Resource" uid="uid://jdwt4t3gukqb" path="res://resources/crops/carrot.tres" id="3_th4st"]
+[ext_resource type="Texture2D" uid="uid://bt63bghbovuw4" path="res://assets/crops/carrot-icon-Sheet.png" id="3_t8dnq"]
+[ext_resource type="Script" path="res://resources/items/item.gd" id="4_pknay"]
+
+[sub_resource type="Resource" id="Resource_537ar"]
+script = ExtResource("4_pknay")
+name = "carrot"
+sprite_sheet = ExtResource("1_kp2ee")
+icon = ExtResource("3_t8dnq")
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_d7527"]
 size = Vector2(14, 10)
@@ -11,7 +18,7 @@ size = Vector2(14, 10)
 texture = ExtResource("1_kp2ee")
 hframes = 4
 script = ExtResource("2_fqum8")
-crop = ExtResource("3_th4st")
+crop = SubResource("Resource_537ar")
 
 [node name="HelipodDetector" type="Area2D" parent="."]
 collision_layer = 0

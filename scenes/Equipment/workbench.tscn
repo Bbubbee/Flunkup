@@ -1,0 +1,19 @@
+[gd_scene load_steps=4 format=3 uid="uid://b0tkn02t7edeu"]
+
+[ext_resource type="Texture2D" uid="uid://bs0lk1yntwd6b" path="res://assets/equipment/all-equipment-Sheet.png" id="1_rmbh7"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_xtv4n"]
+atlas = ExtResource("1_rmbh7")
+region = Rect2(0, 0, 48, 32)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_05coa"]
+size = Vector2(39, 25)
+
+[node name="Workbench" type="Sprite2D"]
+texture = SubResource("AtlasTexture_xtv4n")
+
+[node name="InteractArea" type="Area2D" parent="."]
+
+[node name="InteractShape" type="CollisionShape2D" parent="InteractArea"]
+position = Vector2(-0.5, 3.5)
+shape = SubResource("RectangleShape2D_05coa")

@@ -9,7 +9,7 @@ var world_path: String = 'res://scenes/world/world.tscn'
 var world_checkpoint_path: String = 'res://scenes/world/checkpoint_worlds/world_checkpoint.tscn'
 
 func _ready() -> void:
-	init_level(world_checkpoint_path)
+	init_level(world_path)
 
 func init_level(level_path: String):
 	# Configure the wilds level based on the starting level (world or checkpoint) 

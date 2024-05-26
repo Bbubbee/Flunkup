@@ -1,7 +1,8 @@
-[gd_scene load_steps=4 format=3 uid="uid://dgi3cxx545v2o"]
+[gd_scene load_steps=5 format=3 uid="uid://dgi3cxx545v2o"]
 
 [ext_resource type="Texture2D" uid="uid://261iocr6qrbb" path="res://assets/tiles/ores/copper-Sheet.png" id="1_1ylv4"]
 [ext_resource type="Script" path="res://scenes/world/ores/base_ore.gd" id="2_kgpo1"]
+[ext_resource type="Resource" uid="uid://bfirycf52m4qw" path="res://resources/items/ores/copper.tres" id="3_jr2be"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_8pn4m"]
 size = Vector2(18, 12)
@@ -9,6 +10,7 @@ size = Vector2(18, 12)
 [node name="BaseOre" type="Sprite2D"]
 texture = ExtResource("1_1ylv4")
 script = ExtResource("2_kgpo1")
+ore_type = ExtResource("3_jr2be")
 
 [node name="Area" type="Area2D" parent="."]
 

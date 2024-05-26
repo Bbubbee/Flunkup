@@ -10,8 +10,8 @@ class_name Player
 @onready var state_machine: PlayerStateMachine = $StateMachine
 
 # Test crops for inventory. 
-const WHEAT = preload("res://resources/crops/wheat.tres")
-const CARROT = preload("res://resources/crops/carrot.tres")
+#const WHEAT = preload("res://resources/crops/wheat.tres")
+const CARROT = preload("res://resources/items/crops/carrot.tres")
 
 @export var helipod: CharacterBody2D
 
@@ -35,10 +35,6 @@ func _ready():
 	# Inventory test. 
 	inventory.add_item(CARROT)
 	inventory.add_item(CARROT)
-	inventory.add_item(WHEAT)
-	inventory.add_item(WHEAT)
-	inventory.add_item(WHEAT)
-	
 	hot_bar.refresh_hotbar(inventory)
 	
 	state_machine.init(self)

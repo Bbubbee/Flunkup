@@ -1,7 +1,6 @@
 extends Sprite2D
 
-
-@export var crop: Item
+@export var crop: Crop
 
 # Used to increment the stages of growth for a crop (4 stages)
 var stage_counter: int = 0

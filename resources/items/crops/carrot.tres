@@ -1,0 +1,12 @@
+[gd_resource type="Resource" script_class="Crop" load_steps=4 format=3 uid="uid://bknv1e34dksfu"]
+
+[ext_resource type="Script" path="res://resources/items/crops/crop.gd" id="1_ueon5"]
+[ext_resource type="Texture2D" uid="uid://bt63bghbovuw4" path="res://assets/crops/carrot-icon-Sheet.png" id="1_wmvbf"]
+[ext_resource type="Texture2D" uid="uid://m5y78n2ifvmi" path="res://assets/crops/carrot-Sheet.png" id="3_nuqbp"]
+
+[resource]
+script = ExtResource("1_ueon5")
+days_until_adult = 15
+name = "carrot"
+sprite_sheet = ExtResource("3_nuqbp")
+icon = ExtResource("1_wmvbf")

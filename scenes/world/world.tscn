@@ -1,4 +1,4 @@
-[gd_scene load_steps=8 format=3 uid="uid://b4gosjrsk1h2q"]
+[gd_scene load_steps=9 format=3 uid="uid://b4gosjrsk1h2q"]
 
 [ext_resource type="PackedScene" uid="uid://b6sepyerpol16" path="res://scenes/player/player.tscn" id="1_q2eh0"]
 [ext_resource type="Script" path="res://scenes/world/world.gd" id="1_v4yy0"]
@@ -6,6 +6,7 @@
 [ext_resource type="PackedScene" uid="uid://c6ujb8e5n6kvp" path="res://scenes/world/tiles/temp_tilemap.tscn" id="3_h6qus"]
 [ext_resource type="Script" path="res://scenes/main/day_tracker_label.gd" id="5_u2i4a"]
 [ext_resource type="PackedScene" uid="uid://t84dc3iv5p16" path="res://scenes/player/camear/player_camera.tscn" id="6_e0ufp"]
+[ext_resource type="PackedScene" uid="uid://b0tkn02t7edeu" path="res://scenes/Equipment/workbench.tscn" id="7_nmd74"]
 
 [sub_resource type="SegmentShape2D" id="SegmentShape2D_v35l8"]
 a = Vector2(2547, 6)
@@ -47,9 +48,17 @@ debug_color = Color(0.992157, 0, 0.262745, 0.419608)
 
 [node name="PlayerCamera" parent="." instance=ExtResource("6_e0ufp")]
 position = Vector2(195, -323)
+limit_left = -600
+limit_top = -450
+limit_right = 850
+limit_bottom = 1000
+
+[node name="Workbench" parent="." instance=ExtResource("7_nmd74")]
+position = Vector2(261, -304)
 
 [connection signal="body_entered" from="TransitionArea" to="." method="_on_transition_area_body_entered"]
 
 [editable path="Player"]
 [editable path="Player/Components/Hurtbox"]
 [editable path="Player/StateMachine"]
+[editable path="PlayerCamera"]
