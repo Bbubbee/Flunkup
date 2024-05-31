@@ -1,4 +1,4 @@
-[gd_scene load_steps=5 format=3 uid="uid://dgi3cxx545v2o"]
+[gd_scene load_steps=5 format=3 uid="uid://blue1h7i4cmws"]
 
 [ext_resource type="Texture2D" uid="uid://261iocr6qrbb" path="res://assets/tiles/ores/copper-Sheet.png" id="1_1ylv4"]
 [ext_resource type="Script" path="res://scenes/world/ores/base_ore.gd" id="2_kgpo1"]

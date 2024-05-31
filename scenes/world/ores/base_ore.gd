@@ -10,11 +10,8 @@ var is_mouse_over: bool = false
 var time_to_mine: int = 2
 
 func _input(event: InputEvent) -> void:
-	if event.is_action_pressed("left_click") and is_mouse_over:
-		# Position helipod 2 tiles above ore. 
-		var pos = Vector2(global_position.x, global_position.y - 16)
-		 
-		Events.position_helipod.emit(pos, self) 
+	if event.is_action_pressed("left_click") and is_mouse_over:		 
+		Events.position_helipod.emit(global_position, self) 
 	
 	
 func act_upon(): 

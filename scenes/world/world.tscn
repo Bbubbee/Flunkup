@@ -36,6 +36,7 @@ offset_right = 40.0
 offset_bottom = 23.0
 text = "1"
 script = ExtResource("5_u2i4a")
+metadata/_edit_use_anchors_ = true
 
 [node name="TransitionArea" type="Area2D" parent="."]
 collision_layer = 0

@@ -10,7 +10,7 @@ class_name Player
 @onready var state_machine: PlayerStateMachine = $StateMachine
 
 # Test crops for inventory. 
-#const WHEAT = preload("res://resources/crops/wheat.tres")
+const WHEAT = preload("res://resources/items/crops/wheat.tres")
 const CARROT = preload("res://resources/items/crops/carrot.tres")
 
 @export var helipod: CharacterBody2D
@@ -35,6 +35,8 @@ func _ready():
 	# Inventory test. 
 	inventory.add_item(CARROT)
 	inventory.add_item(CARROT)
+	inventory.add_item(WHEAT)
+	inventory.add_item(WHEAT)
 	hot_bar.refresh_hotbar(inventory)
 	
 	state_machine.init(self)
@@ -75,9 +77,15 @@ func _input(event: InputEvent) -> void:
 	if event.is_action_pressed("left_click") and can_plant and held_item:
 		Events.plant_on_tile.emit(self.get_global_mouse_position(), held_item)
 
+"""
+	STATE MACHINE OVERRIDES 
+	
+	These activate a certain state, regardless of the current state. 
+"""
 
 func _on_hurtbox_im_hit() -> void:
 	state_machine_2.force_transition('hurt')
+
 
 
 

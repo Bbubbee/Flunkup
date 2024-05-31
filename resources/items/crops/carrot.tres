@@ -6,7 +6,7 @@
 
 [resource]
 script = ExtResource("1_ueon5")
-days_until_adult = 15
+days_until_adult = 16
 name = "carrot"
 sprite_sheet = ExtResource("3_nuqbp")
 icon = ExtResource("1_wmvbf")

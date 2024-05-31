@@ -24,6 +24,7 @@ func physics_process(delta: float) -> void:
 	# TODO: Change how far helipod stops from the target. 
 	# Stop when near target. 
 	if distance < 10: 
+		# Act on the tile positioned to. 
 		transition.emit(self, 'action')
 		#transition.emit(self, 'action', {'tile': original_tile, "entity": entity})
 		
@@ -33,8 +34,8 @@ func physics_process(delta: float) -> void:
 
 func on_input(event: InputEvent): 
 	# Go the where the mouse clicked. 
-	if event.is_action_pressed('right_click'):
-		transition.emit(self, 'movetomouse')
+	#if event.is_action_pressed('right_click'):
+		#transition.emit(self, 'movetomouse')
 	
 	if event.is_action_pressed("change_heli_mode"):
 		transition.emit(self, 'follow') 

@@ -23,11 +23,14 @@ func _on_increase_day():
 	
 	# A crop has 4 sprites for stage of growth. 
 	if stage_counter > roundi(float(crop.days_until_adult)/4.0):
+		print('go up a stage')
 		stage_counter = 0 
-		frame = min(frame + 1, 3)
+		frame = min(frame + 1, 4)
 	
 	age += 1 
-	if age >= crop.days_until_adult-1: harvestable = true
+	if age >= crop.days_until_adult: 
+		print('harvestable')
+		harvestable = true
 
 
 const ITEM_DROP = preload("res://scenes/items/item_drop.tscn")

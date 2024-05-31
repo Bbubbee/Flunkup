@@ -12,6 +12,7 @@ func init(enter_params: EnterParams = null):
 
 func _on_player_detector_body_entered(_body: Node2D) -> void:
 	var enter_params = EnterParams.new() 
+	# Positions the player at the top of a wild level. 
 	enter_params.player_pos = Vector2(player.global_position.x, -1470)
 	enter_params.player_state = "flying"
 	

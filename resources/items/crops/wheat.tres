@@ -1,0 +1,12 @@
+[gd_resource type="Resource" script_class="Crop" load_steps=4 format=3 uid="uid://5u7888e7l2pa"]
+
+[ext_resource type="Script" path="res://resources/items/crops/crop.gd" id="1_bon6p"]
+[ext_resource type="Texture2D" uid="uid://s8xcvujckusf" path="res://assets/crops/wheat-icon-Sheet.png" id="1_ja8ra"]
+[ext_resource type="Texture2D" uid="uid://c8r3f3usigdok" path="res://assets/crops/wheat-Sheet.png" id="3_7x72h"]
+
+[resource]
+script = ExtResource("1_bon6p")
+days_until_adult = 12
+name = "wheat"
+sprite_sheet = ExtResource("3_7x72h")
+icon = ExtResource("1_ja8ra")

@@ -1,6 +1,8 @@
 extends State
 
 
+func _ready() -> void:
+	state_name = 'follow'
 
 func physics_process(delta: float) -> void:
 	# Get distance to player. 

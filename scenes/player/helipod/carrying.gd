@@ -1,5 +1,7 @@
 extends State
 
+func _ready() -> void:
+	state_name = 'carrying'
 
 # Relinquish control to the player!!!
 

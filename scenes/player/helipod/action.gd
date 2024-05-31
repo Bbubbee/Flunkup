@@ -8,6 +8,9 @@ extends State
 		E.g., grass = till, dirt = water. 
 """
 
+func _ready() -> void:
+	state_name = 'action'
+
 func enter(_enter_params = null):
 	actor.animator_2.play('shake')		
 

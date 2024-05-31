@@ -1,23 +1,23 @@
 [gd_scene load_steps=7 format=3 uid="uid://c826rgyfnray0"]
 
-[ext_resource type="Texture2D" uid="uid://m5y78n2ifvmi" path="res://assets/crops/carrot-Sheet.png" id="1_kp2ee"]
-[ext_resource type="Script" path="res://scenes/crops/crop.gd" id="2_fqum8"]
-[ext_resource type="Texture2D" uid="uid://bt63bghbovuw4" path="res://assets/crops/carrot-icon-Sheet.png" id="3_t8dnq"]
-[ext_resource type="Script" path="res://resources/items/item.gd" id="4_pknay"]
+[ext_resource type="Texture2D" uid="uid://m5y78n2ifvmi" path="res://assets/crops/carrot-Sheet.png" id="1_j7xm4"]
+[ext_resource type="Script" path="res://scenes/crops/base_crop.gd" id="2_kjcf4"]
+[ext_resource type="Texture2D" uid="uid://bt63bghbovuw4" path="res://assets/crops/carrot-icon-Sheet.png" id="3_x3fo6"]
+[ext_resource type="Script" path="res://resources/items/item.gd" id="4_jl3n7"]
 
 [sub_resource type="Resource" id="Resource_537ar"]
-script = ExtResource("4_pknay")
+script = ExtResource("4_jl3n7")
 name = "carrot"
-sprite_sheet = ExtResource("1_kp2ee")
-icon = ExtResource("3_t8dnq")
+sprite_sheet = ExtResource("1_j7xm4")
+icon = ExtResource("3_x3fo6")
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_d7527"]
 size = Vector2(14, 10)
 
-[node name="Crop" type="Sprite2D"]
-texture = ExtResource("1_kp2ee")
+[node name="BaseCrop" type="Sprite2D"]
+texture = ExtResource("1_j7xm4")
 hframes = 4
-script = ExtResource("2_fqum8")
+script = ExtResource("2_kjcf4")
 crop = SubResource("Resource_537ar")
 
 [node name="HelipodDetector" type="Area2D" parent="."]

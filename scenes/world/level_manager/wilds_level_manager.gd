@@ -11,8 +11,10 @@ var world_checkpoint_path: String = 'res://scenes/world/checkpoint_worlds/world_
 func _ready() -> void:
 	init_level(world_path)
 
+## Initialise the starting level. 
+## @param: level_path -> The starting level. 
+## Will change the wilds_level based on the starting level. 
 func init_level(level_path: String):
-	# Configure the wilds level based on the starting level (world or checkpoint) 
 	if level_path == world_checkpoint_path: wilds_level = 5
 	else: wilds_level = 0 
 	
@@ -45,7 +47,6 @@ func change_wilds_level(dir: Vector2i = Vector2i.UP, enter_params: EnterParams =
 	elif wilds_level >= 5:
 		change_level(world_checkpoint_path, enter_params)
 		
-	
 	# Go to a new wilds level. 
 	else: 
 		change_level(wild_level_path, enter_params)

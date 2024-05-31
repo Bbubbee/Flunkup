@@ -10,18 +10,12 @@ func physics_process(delta: float) -> void:
 
 func on_input(event: InputEvent): 
 	# Go to where the mouse was right clicked. 
-	if event.is_action_pressed('right_click'):
-		transition.emit(self, 'movetomouse') 
 	
 	# Go to follow mode. 
 	if event.is_action_pressed("change_heli_mode"):
 		transition.emit(self, 'follow') 
 		Events.set_mode.emit(true)
 	
-	# Go to the clicked tile. 
-	if event.is_action_pressed('left_click'): 
-		pass
-		#position_helipod()
 	
 
 #func position_helipod(pos: Vector2 = Vector2.ZERO, entity = null): 
