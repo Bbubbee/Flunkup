@@ -1,11 +1,13 @@
 extends PlayerState
 
+func enter(_enter_params = null):
+	actor.animator.play('idle')
+
 func physics_process(delta):
 	# Basic movement. 
 	actor.handle_movement(delta) 
 	actor.velocity_component.handle_gravity(delta) 
 	actor.flip_nodes()
-	actor.sprite.frame = 0
 	
 	actor.move_and_slide() 
 	

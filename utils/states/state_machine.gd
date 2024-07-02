@@ -77,7 +77,7 @@ func on_child_transition(state: State, new_state_name: String, enter_params = nu
 ## Safe forced transition. 
 func force_transition(new_state_name: String, enter_params = null): 	
 	# Warning. Ensure finished_transitioning is set to true so this doesn't loop
-	# forever. 
+	# forever. It does so above. 
 	var backup = 50
 	while not finished_transitioning:
 		print("force transition is looping")

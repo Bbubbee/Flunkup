@@ -1,0 +1,6 @@
+[gd_scene load_steps=2 format=3 uid="uid://djeq1btxfi0f3"]
+
+[ext_resource type="Texture2D" uid="uid://blww7n6dai474" path="res://assets/equipment/furnace-Sheet.png" id="1_kf7c2"]
+
+[node name="Furnace" type="Sprite2D"]
+texture = ExtResource("1_kf7c2")

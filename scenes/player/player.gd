@@ -3,6 +3,8 @@ class_name Player
 
 # General. 
 @onready var sprite: Sprite2D = $General/Sprite
+@onready var animator: AnimationPlayer = $General/Animator
+
 
 # Components.
 @onready var velocity_component: PlayerVelocityComponent = $Components/VelocityComponent

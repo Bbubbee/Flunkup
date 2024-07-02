@@ -1,0 +1,40 @@
+[gd_scene load_steps=7 format=3 uid="uid://j7h2lrsgqikv"]
+
+[ext_resource type="Script" path="res://scenes/enemies/base_enemy.gd" id="1_wkgbv"]
+[ext_resource type="PackedScene" uid="uid://dw5fdg8s00p7i" path="res://utils/states/state_machine.tscn" id="2_54tsc"]
+[ext_resource type="Script" path="res://scenes/enemies/idle_enemy_base.gd" id="3_t0xxc"]
+[ext_resource type="PackedScene" uid="uid://dtg7dr1jl4ced" path="res://utils/components/velocity_component.tscn" id="4_aftra"]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_gya2q"]
+radius = 6.0
+height = 12.0
+
+[sub_resource type="PlaceholderTexture2D" id="PlaceholderTexture2D_rg64e"]
+
+[node name="BaseEnemy" type="CharacterBody2D"]
+collision_layer = 16
+script = ExtResource("1_wkgbv")
+
+[node name="PhysicsCollider" type="CollisionShape2D" parent="."]
+shape = SubResource("CapsuleShape2D_gya2q")
+debug_color = Color(0.866667, 0.286275, 0.545098, 0.419608)
+
+[node name="General" type="Node2D" parent="."]
+
+[node name="Sprite" type="Sprite2D" parent="General"]
+position = Vector2(-4.76837e-07, -0.499999)
+scale = Vector2(12, 19)
+texture = SubResource("PlaceholderTexture2D_rg64e")
+
+[node name="StateMachine" parent="." node_paths=PackedStringArray("initial_state") instance=ExtResource("2_54tsc")]
+initial_state = NodePath("Idle")
+
+[node name="Idle" type="Node" parent="StateMachine"]
+script = ExtResource("3_t0xxc")
+
+[node name="Components" type="Node2D" parent="."]
+
+[node name="VelocityComponent" parent="Components" node_paths=PackedStringArray("actor") instance=ExtResource("4_aftra")]
+actor = NodePath("../..")
+
+[editable path="StateMachine"]

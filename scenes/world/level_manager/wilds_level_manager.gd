@@ -8,8 +8,12 @@ var wild_level_path: String = 'res://scenes/world/upper_world/wild_world.tscn'
 var world_path: String = 'res://scenes/world/world.tscn'
 var world_checkpoint_path: String = 'res://scenes/world/checkpoint_worlds/world_checkpoint.tscn'
 
+@onready var label: Label = $CanvasLayer/Label
+
+
 func _ready() -> void:
 	init_level(world_path)
+	
 
 ## Initialise the starting level. 
 ## @param: level_path -> The starting level. 
@@ -42,7 +46,6 @@ func change_wilds_level(dir: Vector2i = Vector2i.UP, enter_params: EnterParams =
 		# Override the enter params for the bottom floor. 
 		enter_params.player_pos.y = -420
 		change_level(world_path, enter_params)
-	
 	# Go to a checkpoint level. 
 	elif wilds_level >= 5:
 		change_level(world_checkpoint_path, enter_params)
@@ -50,6 +53,9 @@ func change_wilds_level(dir: Vector2i = Vector2i.UP, enter_params: EnterParams =
 	# Go to a new wilds level. 
 	else: 
 		change_level(wild_level_path, enter_params)
+	
+	label.text = str(wilds_level)
+	
 
 
 func unload_level(): 

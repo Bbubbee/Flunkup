@@ -1,6 +1,6 @@
 [gd_scene load_steps=2 format=3 uid="uid://t84dc3iv5p16"]
 
-[ext_resource type="Script" path="res://scenes/player/camear/player_camera.gd" id="1_bh22k"]
+[ext_resource type="Script" path="res://scenes/player/camera/player_camera.gd" id="1_bh22k"]
 
 [node name="PlayerCamera" type="Camera2D"]
 zoom = Vector2(0.8, 0.8)

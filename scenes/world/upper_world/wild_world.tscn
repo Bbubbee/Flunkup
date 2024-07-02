@@ -6,7 +6,7 @@
 [ext_resource type="PackedScene" uid="uid://b6sepyerpol16" path="res://scenes/player/player.tscn" id="4_00w2v"]
 [ext_resource type="PackedScene" uid="uid://dtg7dr1jl4ced" path="res://utils/components/velocity_component.tscn" id="5_sv2fb"]
 [ext_resource type="Script" path="res://utils/components/players_velocity_component.gd" id="6_x0urb"]
-[ext_resource type="PackedScene" uid="uid://t84dc3iv5p16" path="res://scenes/player/camear/player_camera.tscn" id="7_nvve0"]
+[ext_resource type="PackedScene" uid="uid://t84dc3iv5p16" path="res://scenes/player/camera/player_camera.tscn" id="7_nvve0"]
 [ext_resource type="Script" path="res://scenes/main/day_tracker_label.gd" id="8_lxkg7"]
 [ext_resource type="Script" path="res://scenes/world/upper_world/player_detector_top.gd" id="9_5ylay"]
 

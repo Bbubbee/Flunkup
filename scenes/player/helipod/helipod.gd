@@ -63,7 +63,9 @@ var entity
 ## The helipod has been positioned by pressing an 'entity' -> tile or interactable object. 
 ## Position above it and atempt to 'act_upon' it. Ensure the entity has that function. 
 func _on_position_helipod(pos: Vector2, e = null):	
-	if state_machine.current_state.state_name == 'follow' or state_machine.current_state.state_name == 'carrying' or state_machine.current_state.state_name == 'action':
+	if (state_machine.current_state.state_name == 'follow' 
+	or state_machine.current_state.state_name == 'carrying' 
+	or state_machine.current_state.state_name == 'action'):
 		return
 		
 	# Position helipod 2 tiles above ore. 

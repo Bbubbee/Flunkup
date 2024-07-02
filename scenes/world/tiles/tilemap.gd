@@ -19,7 +19,6 @@ var tileset_layer: int = 0
 @onready var hazards: Node2D = $Hazards
 
 func _ready():
-	Events.process_tile.connect(_on_process_tile)
 	Events.plant_on_tile.connect(_on_plant_on_tile)
 
 
@@ -39,18 +38,10 @@ func _on_plant_on_tile(pos: Vector2, crop: Crop):
 		crop_scene.position = new_pos
 		crops.add_child(crop_scene)
 		crop_scene.init(crop)
-			
 
-## Till this tile. 
-func _on_process_tile(tile_pos: Vector2i): 
-	if retrieve_custom_data(tile_pos, "can_till", 0): 
-		set_cell(ground_layer, tile_pos, 0, dirt_atlas_coord)
-	elif retrieve_custom_data(tile_pos, "can_water", 0): 	
-		set_cell(ground_layer, tile_pos, 0, dirt_atlas_coord, 2)
 
 ## Gets a tile within the tilemap. 
 ## @param: layer = the layer of the tilemap. Defaults to 0, the ground layer. 
-## If 
 func get_valid_tile(pos: Vector2, custom_data_layer: String = "", layer: int = 0): 
 	var tile_pos: Vector2i = local_to_map(pos)
 	
@@ -106,7 +97,7 @@ func tiles_custom_data_list(tile_pos: Vector2i, layer: int) -> Array[String]:
 		
 	return []
 
-
+# Currently called by: helipod. 
 func act_upon(): 
 	var selected_tile: Vector2i = last_selected_tile
 	if not selected_tile: return
@@ -114,22 +105,16 @@ func act_upon():
 	var cd_list: Array[String] = tiles_custom_data_list(last_selected_tile, tileset_layer)
 	if not cd_list: return
 	
+	var tile = Types.Tile.new()
+	tile.init(selected_tile, 'you aint shit')
+	GameManager.add_affected_tile(tile)
+	
 	# Either till or water the tile.
 	if retrieve_custom_data(selected_tile, 'can_till', tileset_layer):
 		set_cell(ground_layer, selected_tile, 0, dirt_atlas_coord)
 	elif retrieve_custom_data(selected_tile, 'can_water', tileset_layer):
 		set_cell(ground_layer, selected_tile, 0, dirt_atlas_coord, 2)
-			
-			
-	
-	
-	
-	# Get the custom data of the tile. 
-	
-	#if retrieve_custom_data(tile_pos, "can_till", 0): 
-		#set_cell(ground_layer, tile_pos, 0, dirt_atlas_coord)
-	#elif retrieve_custom_data(tile_pos, "can_water", 0): 	
-		#set_cell(ground_layer, tile_pos, 0, dirt_atlas_coord, 2)
+
 
 var last_selected_tile: Vector2
 

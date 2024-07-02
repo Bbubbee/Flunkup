@@ -60,3 +60,16 @@ libraries = {
 "": SubResource("AnimationLibrary_kop4j")
 }
 autoplay = "RESET"
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="Label" type="Label" parent="CanvasLayer"]
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -10.0
+offset_bottom = 23.0
+grow_horizontal = 0
+size_flags_horizontal = 0
+theme_override_colors/font_color = Color(0.968627, 1, 0.231373, 1)
+text = "0"

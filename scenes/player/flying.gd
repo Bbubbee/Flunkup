@@ -5,7 +5,7 @@ extends PlayerState
 
 func enter(_enter_params = null):
 	actor.velocity.y = 0
-	actor.sprite.frame = 1
+	actor.animator.play('fly')
 	
 	# Relinquish control from the helipod scene. 
 	Events.player_touched_heli.emit(true)
