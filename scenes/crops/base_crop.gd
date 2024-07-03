@@ -17,7 +17,7 @@ func _ready():
 	Events.increase_day.connect(_on_increase_day)
 
 
-func _on_increase_day():
+func _on_increase_day(_day: int):
 	if harvestable: return
 	stage_counter += 1
 	

@@ -98,6 +98,8 @@ func tiles_custom_data_list(tile_pos: Vector2i, layer: int) -> Array[String]:
 	return []
 
 # Currently called by: helipod. 
+# Helipod checks if has this method. If it does, it can act upon it. 
+# 
 func act_upon(): 
 	var selected_tile: Vector2i = last_selected_tile
 	if not selected_tile: return
