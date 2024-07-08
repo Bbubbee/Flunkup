@@ -6,6 +6,7 @@ signal player_touched_heli(hold: bool)
 
 signal plant_on_tile(pos: Vector2, crop: Item)
 
+# Set the mode of the helipod. 
 signal set_mode(active: bool)
 
 signal increase_day(current_day: int)

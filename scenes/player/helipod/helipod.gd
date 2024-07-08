@@ -14,8 +14,10 @@ extends CharacterBody2D
 
 
 # Can be initialised carrying the player. 
-func init(inital_state: String):
-	state_machine.force_transition(inital_state)
+func init(player_state: String):
+	# Change the state to carrying if the player is flying. 
+	if player_state == 'flying': 
+		state_machine.force_transition('carrying')
 
 
 func _ready() -> void:

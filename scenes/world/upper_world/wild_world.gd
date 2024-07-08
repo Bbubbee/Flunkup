@@ -26,9 +26,8 @@ var noise_val_arr = []
 func init(enter_params: EnterParams = null):
 	if enter_params: 
 		player.init(enter_params.player_state, enter_params.player_pos)
-		if enter_params.player_state == 'flying': 
-			helipod.init('carrying')
-			
+		helipod.init(enter_params.player_state)
+	
 
 func _ready() -> void:
 	# Get the noise that we set in the editor. 

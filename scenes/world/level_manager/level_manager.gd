@@ -7,7 +7,6 @@ class_name LevelManager
 @onready var main_level: Node2D = $MainLevel  # Holds the current_level node.
 var current_level: Node2D
 
-## Level stack. 
 
 # NOTE: Commented these 2 functions because of changes in paramater types.
 func _ready() -> void:

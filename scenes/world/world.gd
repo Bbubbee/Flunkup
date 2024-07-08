@@ -12,8 +12,7 @@ func _ready():
 func init(enter_params: EnterParams = null):
 	if enter_params: 
 		player.init(enter_params.player_state, enter_params.player_pos)
-		if enter_params.player_state == 'flying': 
-			helipod.init('carrying')
+		helipod.init(enter_params.player_state)
 
 func _on_transition_area_body_entered(_body):
 	var enter_params = EnterParams.new() 

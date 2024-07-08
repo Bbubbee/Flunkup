@@ -3,8 +3,6 @@ extends Node
 
 const SAVE_PATH: String = 'user://savegame.bin'
 const SAVE_PASS: String = 'password'
-		
-		
 
 
 func load_game():
@@ -20,8 +18,6 @@ func load_game():
 		var current_line = save_file.get_line()
 		print(current_line)
 
-
-	
 	save_file.close()
 	
 	Events.load_game.emit()
@@ -30,6 +26,10 @@ func load_game():
 func save_game():
 	var save_file = get_file(true) 
 	
+	# How do we get access to the players position? 
+	# Make player global.
+	# Emit a signal that sets variables in game manager, then retrieve those things from game manager. 
+	# 	Timing issue. Idle? 
 	
 	var data: Dictionary = {
 		'current_day': 'this is the current day',
@@ -46,7 +46,7 @@ func save_game():
 
 
 """
-	Get's the file to either save or load. 
+	Retrieves file for either save or load. 
 """
 func get_file(is_write: bool):
 	var save_file: FileAccess
@@ -58,8 +58,7 @@ func get_file(is_write: bool):
 	if is_write:
 		save_file = FileAccess.open_encrypted_with_pass(SAVE_PATH, FileAccess.WRITE, password) 
 	else: 
-		if not FileAccess.file_exists(SAVE_PATH):
-			return
+		if not FileAccess.file_exists(SAVE_PATH): return
 		save_file = FileAccess.open_encrypted_with_pass(SAVE_PATH, FileAccess.READ, password) 
 	
 	return save_file
