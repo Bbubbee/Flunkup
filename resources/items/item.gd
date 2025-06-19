@@ -7,4 +7,3 @@ class_name Item
 @export var sprite_sheet: Texture2D
 
 @export var icon: Texture2D
-

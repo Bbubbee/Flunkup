@@ -22,5 +22,3 @@ func physics_process(_delta: float):
 	
 func on_input(_event: InputEvent): 
 	pass
-
-

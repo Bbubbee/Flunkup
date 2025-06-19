@@ -87,7 +87,3 @@ func _input(event: InputEvent) -> void:
 
 func _on_hurtbox_im_hit() -> void:
 	state_machine_2.force_transition('hurt')
-
-
-
-
